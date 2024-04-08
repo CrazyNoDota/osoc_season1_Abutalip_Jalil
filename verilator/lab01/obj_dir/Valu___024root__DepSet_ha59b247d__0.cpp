@@ -12,126 +12,259 @@ VL_INLINE_OPT void Valu___024root___ico_sequent__TOP__0(Valu___024root* vlSelf) 
     Valu__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Valu___024root___ico_sequent__TOP__0\n"); );
     // Init
-    SData/*15:0*/ ALU__DOT__temp_a_out;
-    ALU__DOT__temp_a_out = 0;
-    SData/*15:0*/ ALU__DOT__temp_l_out;
-    ALU__DOT__temp_l_out = 0;
+    SData/*15:0*/ alu__DOT__temp_a_out;
+    alu__DOT__temp_a_out = 0;
+    SData/*15:0*/ alu__DOT__temp_l_out;
+    alu__DOT__temp_l_out = 0;
+    CData/*0:0*/ alu__DOT__arithmetic_carry_out;
+    alu__DOT__arithmetic_carry_out = 0;
     // Body
+    vlSelf->compare = ((IData)(vlSelf->in_a) == (IData)(vlSelf->in_b));
     if ((8U & (IData)(vlSelf->sel))) {
         if ((4U & (IData)(vlSelf->sel))) {
             if ((2U & (IData)(vlSelf->sel))) {
                 if ((1U & (IData)(vlSelf->sel))) {
-                    ALU__DOT__temp_a_out = (0xffffU 
-                                            & ((IData)(vlSelf->in_a) 
-                                               - (IData)(1U)));
-                    ALU__DOT__temp_l_out = (0xffffU 
+                    alu__DOT__arithmetic_carry_out 
+                        = (1U & (1U & ((((IData)(vlSelf->in_a) 
+                                         - (IData)(1U)) 
+                                        + (IData)(vlSelf->carry_in)) 
+                                       >> 0x10U)));
+                    alu__DOT__temp_l_out = (0xffffU 
                                             & (IData)(vlSelf->in_a));
-                } else {
-                    ALU__DOT__temp_a_out = (0xffffU 
+                    alu__DOT__temp_a_out = (0xffffU 
                                             & (((IData)(vlSelf->in_a) 
-                                                + (~ (IData)(vlSelf->in_b))) 
-                                               + (IData)(vlSelf->in_a)));
-                    ALU__DOT__temp_l_out = (0xffffU 
+                                                - (IData)(1U)) 
+                                               + (IData)(vlSelf->carry_in)));
+                } else {
+                    alu__DOT__arithmetic_carry_out 
+                        = (1U & (1U & (((((IData)(vlSelf->in_a) 
+                                          + (0xffffU 
+                                             & (~ (IData)(vlSelf->in_b)))) 
+                                         + (IData)(vlSelf->in_a)) 
+                                        + (IData)(vlSelf->carry_in)) 
+                                       >> 0x10U)));
+                    alu__DOT__temp_l_out = (0xffffU 
                                             & ((IData)(vlSelf->in_a) 
                                                | (IData)(vlSelf->in_b)));
+                    alu__DOT__temp_a_out = (0xffffU 
+                                            & ((((IData)(vlSelf->in_a) 
+                                                 + 
+                                                 (~ (IData)(vlSelf->in_b))) 
+                                                + (IData)(vlSelf->in_a)) 
+                                               + (IData)(vlSelf->carry_in)));
                 }
             } else if ((1U & (IData)(vlSelf->sel))) {
-                ALU__DOT__temp_a_out = (0xffffU & (
-                                                   ((IData)(vlSelf->in_a) 
-                                                    | (IData)(vlSelf->in_b)) 
-                                                   + (IData)(vlSelf->in_a)));
-                ALU__DOT__temp_l_out = (0xffffU & ((IData)(vlSelf->in_a) 
+                alu__DOT__arithmetic_carry_out = (1U 
+                                                  & (1U 
+                                                     & (((((IData)(vlSelf->in_a) 
+                                                           | (IData)(vlSelf->in_b)) 
+                                                          + (IData)(vlSelf->in_a)) 
+                                                         + (IData)(vlSelf->carry_in)) 
+                                                        >> 0x10U)));
+                alu__DOT__temp_l_out = (0xffffU & ((IData)(vlSelf->in_a) 
                                                    | (~ (IData)(vlSelf->in_b))));
+                alu__DOT__temp_a_out = (0xffffU & (
+                                                   (((IData)(vlSelf->in_a) 
+                                                     | (IData)(vlSelf->in_b)) 
+                                                    + (IData)(vlSelf->in_a)) 
+                                                   + (IData)(vlSelf->carry_in)));
             } else {
-                ALU__DOT__temp_a_out = (0xffffU & ((IData)(vlSelf->in_a) 
-                                                   + (IData)(vlSelf->in_a)));
-                ALU__DOT__temp_l_out = (0xffffU & 1U);
+                alu__DOT__arithmetic_carry_out = (1U 
+                                                  & (1U 
+                                                     & ((((IData)(vlSelf->in_a) 
+                                                          + (IData)(vlSelf->in_a)) 
+                                                         + (IData)(vlSelf->carry_in)) 
+                                                        >> 0x10U)));
+                alu__DOT__temp_l_out = (0xffffU & 1U);
+                alu__DOT__temp_a_out = (0xffffU & (
+                                                   ((IData)(vlSelf->in_a) 
+                                                    + (IData)(vlSelf->in_a)) 
+                                                   + (IData)(vlSelf->carry_in)));
             }
         } else if ((2U & (IData)(vlSelf->sel))) {
             if ((1U & (IData)(vlSelf->sel))) {
-                ALU__DOT__temp_a_out = (0xffffU & (
-                                                   ((IData)(vlSelf->in_a) 
-                                                    & (IData)(vlSelf->in_b)) 
-                                                   - (IData)(1U)));
-                ALU__DOT__temp_l_out = (0xffffU & ((IData)(vlSelf->in_a) 
+                alu__DOT__arithmetic_carry_out = (1U 
+                                                  & (1U 
+                                                     & (((((IData)(vlSelf->in_a) 
+                                                           & (IData)(vlSelf->in_b)) 
+                                                          - (IData)(1U)) 
+                                                         + (IData)(vlSelf->carry_in)) 
+                                                        >> 0x10U)));
+                alu__DOT__temp_l_out = (0xffffU & ((IData)(vlSelf->in_a) 
                                                    & (IData)(vlSelf->in_b)));
+                alu__DOT__temp_a_out = (0xffffU & (
+                                                   (((IData)(vlSelf->in_a) 
+                                                     & (IData)(vlSelf->in_b)) 
+                                                    - (IData)(1U)) 
+                                                   + (IData)(vlSelf->carry_in)));
             } else {
-                ALU__DOT__temp_a_out = (0xffffU & (
-                                                   ((IData)(vlSelf->in_a) 
-                                                    | (~ (IData)(vlSelf->in_b))) 
-                                                   + 
-                                                   ((IData)(vlSelf->in_a) 
-                                                    & (IData)(vlSelf->in_b))));
-                ALU__DOT__temp_l_out = (0xffffU & (IData)(vlSelf->in_b));
+                alu__DOT__arithmetic_carry_out = (1U 
+                                                  & (1U 
+                                                     & (((((IData)(vlSelf->in_a) 
+                                                           | (0xffffU 
+                                                              & (~ (IData)(vlSelf->in_b)))) 
+                                                          + 
+                                                          ((IData)(vlSelf->in_a) 
+                                                           & (IData)(vlSelf->in_b))) 
+                                                         + (IData)(vlSelf->carry_in)) 
+                                                        >> 0x10U)));
+                alu__DOT__temp_l_out = (0xffffU & (IData)(vlSelf->in_b));
+                alu__DOT__temp_a_out = (0xffffU & (
+                                                   (((IData)(vlSelf->in_a) 
+                                                     | (~ (IData)(vlSelf->in_b))) 
+                                                    + 
+                                                    ((IData)(vlSelf->in_a) 
+                                                     & (IData)(vlSelf->in_b))) 
+                                                   + (IData)(vlSelf->carry_in)));
             }
         } else if ((1U & (IData)(vlSelf->sel))) {
-            ALU__DOT__temp_a_out = (0xffffU & ((IData)(vlSelf->in_a) 
-                                               + (IData)(vlSelf->in_b)));
-            ALU__DOT__temp_l_out = (0xffffU & (~ ((IData)(vlSelf->in_a) 
+            alu__DOT__arithmetic_carry_out = (1U & 
+                                              (1U & 
+                                               ((((IData)(vlSelf->in_a) 
+                                                  + (IData)(vlSelf->in_b)) 
+                                                 + (IData)(vlSelf->carry_in)) 
+                                                >> 0x10U)));
+            alu__DOT__temp_l_out = (0xffffU & (~ ((IData)(vlSelf->in_a) 
                                                   ^ (IData)(vlSelf->in_b))));
+            alu__DOT__temp_a_out = (0xffffU & (((IData)(vlSelf->in_a) 
+                                                + (IData)(vlSelf->in_b)) 
+                                               + (IData)(vlSelf->carry_in)));
         } else {
-            ALU__DOT__temp_a_out = (0xffffU & ((IData)(vlSelf->in_a) 
-                                               + ((IData)(vlSelf->in_a) 
-                                                  & (IData)(vlSelf->in_b))));
-            ALU__DOT__temp_l_out = (0xffffU & ((~ (IData)(vlSelf->in_a)) 
+            alu__DOT__arithmetic_carry_out = (1U & 
+                                              (1U & 
+                                               ((((IData)(vlSelf->in_a) 
+                                                  + 
+                                                  ((IData)(vlSelf->in_a) 
+                                                   & (IData)(vlSelf->in_b))) 
+                                                 + (IData)(vlSelf->carry_in)) 
+                                                >> 0x10U)));
+            alu__DOT__temp_l_out = (0xffffU & ((~ (IData)(vlSelf->in_a)) 
                                                | (IData)(vlSelf->in_b)));
+            alu__DOT__temp_a_out = (0xffffU & (((IData)(vlSelf->in_a) 
+                                                + ((IData)(vlSelf->in_a) 
+                                                   & (IData)(vlSelf->in_b))) 
+                                               + (IData)(vlSelf->carry_in)));
         }
     } else if ((4U & (IData)(vlSelf->sel))) {
         if ((2U & (IData)(vlSelf->sel))) {
             if ((1U & (IData)(vlSelf->sel))) {
-                ALU__DOT__temp_a_out = (0xffffU & (
-                                                   ((IData)(vlSelf->in_a) 
-                                                    & (~ (IData)(vlSelf->in_b))) 
-                                                   - (IData)(1U)));
-                ALU__DOT__temp_l_out = (0xffffU & ((IData)(vlSelf->in_a) 
+                alu__DOT__arithmetic_carry_out = (1U 
+                                                  & (1U 
+                                                     & ((((0xffffU 
+                                                           & ((IData)(vlSelf->in_a) 
+                                                              & (~ (IData)(vlSelf->in_b)))) 
+                                                          - (IData)(1U)) 
+                                                         + (IData)(vlSelf->carry_in)) 
+                                                        >> 0x10U)));
+                alu__DOT__temp_l_out = (0xffffU & ((IData)(vlSelf->in_a) 
                                                    & (~ (IData)(vlSelf->in_b))));
+                alu__DOT__temp_a_out = (0xffffU & (
+                                                   (((IData)(vlSelf->in_a) 
+                                                     & (~ (IData)(vlSelf->in_b))) 
+                                                    - (IData)(1U)) 
+                                                   + (IData)(vlSelf->carry_in)));
             } else {
-                ALU__DOT__temp_a_out = (0xffffU & (
-                                                   ((IData)(vlSelf->in_a) 
-                                                    - (IData)(vlSelf->in_b)) 
-                                                   - (IData)(1U)));
-                ALU__DOT__temp_l_out = (0xffffU & ((IData)(vlSelf->in_a) 
+                alu__DOT__arithmetic_carry_out = (1U 
+                                                  & (1U 
+                                                     & (((((IData)(vlSelf->in_a) 
+                                                           - (IData)(vlSelf->in_b)) 
+                                                          - (IData)(1U)) 
+                                                         + (IData)(vlSelf->carry_in)) 
+                                                        >> 0x10U)));
+                alu__DOT__temp_l_out = (0xffffU & ((IData)(vlSelf->in_a) 
                                                    ^ (IData)(vlSelf->in_b)));
+                alu__DOT__temp_a_out = (0xffffU & (
+                                                   (((IData)(vlSelf->in_a) 
+                                                     - (IData)(vlSelf->in_b)) 
+                                                    - (IData)(1U)) 
+                                                   + (IData)(vlSelf->carry_in)));
             }
         } else if ((1U & (IData)(vlSelf->sel))) {
-            ALU__DOT__temp_a_out = (0xffffU & (((IData)(vlSelf->in_a) 
-                                                | (IData)(vlSelf->in_b)) 
-                                               + (~ 
-                                                  ((IData)(vlSelf->in_a) 
-                                                   & (IData)(vlSelf->in_b)))));
-            ALU__DOT__temp_l_out = (0xffffU & (~ (IData)(vlSelf->in_b)));
+            alu__DOT__arithmetic_carry_out = (1U & 
+                                              (1U & 
+                                               (((((IData)(vlSelf->in_a) 
+                                                   | (IData)(vlSelf->in_b)) 
+                                                  + 
+                                                  (~ 
+                                                   ((IData)(vlSelf->in_a) 
+                                                    & (IData)(vlSelf->in_b)))) 
+                                                 + (IData)(vlSelf->carry_in)) 
+                                                >> 0x10U)));
+            alu__DOT__temp_l_out = (0xffffU & (~ (IData)(vlSelf->in_b)));
+            alu__DOT__temp_a_out = (0xffffU & ((((IData)(vlSelf->in_a) 
+                                                 | (IData)(vlSelf->in_b)) 
+                                                + (~ 
+                                                   ((IData)(vlSelf->in_a) 
+                                                    & (IData)(vlSelf->in_b)))) 
+                                               + (IData)(vlSelf->carry_in)));
         } else {
-            ALU__DOT__temp_a_out = (0xffffU & ((IData)(vlSelf->in_a) 
-                                               | ((IData)(vlSelf->in_a) 
-                                                  & (~ (IData)(vlSelf->in_b)))));
-            ALU__DOT__temp_l_out = (0xffffU & (~ ((IData)(vlSelf->in_a) 
+            alu__DOT__arithmetic_carry_out = (1U & 
+                                              (1U & 
+                                               (((IData)(vlSelf->in_a) 
+                                                 | ((0xffffU 
+                                                     & ((IData)(vlSelf->in_a) 
+                                                        & (~ (IData)(vlSelf->in_b)))) 
+                                                    + (IData)(vlSelf->carry_in))) 
+                                                >> 0x10U)));
+            alu__DOT__temp_l_out = (0xffffU & (~ ((IData)(vlSelf->in_a) 
                                                   & (IData)(vlSelf->in_b))));
+            alu__DOT__temp_a_out = (0xffffU & ((IData)(vlSelf->in_a) 
+                                               | (((IData)(vlSelf->in_a) 
+                                                   & (~ (IData)(vlSelf->in_b))) 
+                                                  + (IData)(vlSelf->carry_in))));
         }
     } else if ((2U & (IData)(vlSelf->sel))) {
         if ((1U & (IData)(vlSelf->sel))) {
-            ALU__DOT__temp_a_out = (0xffffU & 0xffffU);
-            ALU__DOT__temp_l_out = (0xffffU & 0U);
+            alu__DOT__arithmetic_carry_out = (1U & 
+                                              (1U & 
+                                               (((IData)(0x1ffffU) 
+                                                 + (IData)(vlSelf->carry_in)) 
+                                                >> 0x10U)));
+            alu__DOT__temp_l_out = (0xffffU & 0U);
+            alu__DOT__temp_a_out = (0xffffU & ((IData)(0xffffU) 
+                                               + (IData)(vlSelf->carry_in)));
         } else {
-            ALU__DOT__temp_a_out = (0xffffU & ((IData)(vlSelf->in_a) 
-                                               | (~ (IData)(vlSelf->in_b))));
-            ALU__DOT__temp_l_out = (0xffffU & ((~ (IData)(vlSelf->in_a)) 
+            alu__DOT__arithmetic_carry_out = (1U & 
+                                              (1U & 
+                                               (((IData)(vlSelf->in_a) 
+                                                 | ((0xffffU 
+                                                     & (~ (IData)(vlSelf->in_b))) 
+                                                    + (IData)(vlSelf->carry_in))) 
+                                                >> 0x10U)));
+            alu__DOT__temp_l_out = (0xffffU & ((~ (IData)(vlSelf->in_a)) 
                                                & (IData)(vlSelf->in_b)));
+            alu__DOT__temp_a_out = (0xffffU & ((IData)(vlSelf->in_a) 
+                                               | ((~ (IData)(vlSelf->in_b)) 
+                                                  + (IData)(vlSelf->carry_in))));
         }
     } else if ((1U & (IData)(vlSelf->sel))) {
-        ALU__DOT__temp_a_out = (0xffffU & ((IData)(vlSelf->in_a) 
-                                           | (IData)(vlSelf->in_b)));
-        ALU__DOT__temp_l_out = (0xffffU & (~ ((IData)(vlSelf->in_a) 
+        alu__DOT__arithmetic_carry_out = (1U & (1U 
+                                                & (((IData)(vlSelf->in_a) 
+                                                    | ((IData)(vlSelf->in_b) 
+                                                       + (IData)(vlSelf->carry_in))) 
+                                                   >> 0x10U)));
+        alu__DOT__temp_l_out = (0xffffU & (~ ((IData)(vlSelf->in_a) 
                                               | (IData)(vlSelf->in_b))));
+        alu__DOT__temp_a_out = (0xffffU & ((IData)(vlSelf->in_a) 
+                                           | ((IData)(vlSelf->in_b) 
+                                              + (IData)(vlSelf->carry_in))));
     } else {
-        ALU__DOT__temp_a_out = (0xffffU & (IData)(vlSelf->in_a));
-        ALU__DOT__temp_l_out = (0xffffU & (~ (IData)(vlSelf->in_a)));
+        alu__DOT__arithmetic_carry_out = (1U & (1U 
+                                                & (((IData)(vlSelf->in_a) 
+                                                    + (IData)(vlSelf->carry_in)) 
+                                                   >> 0x10U)));
+        alu__DOT__temp_l_out = (0xffffU & (~ (IData)(vlSelf->in_a)));
+        alu__DOT__temp_a_out = (0xffffU & ((IData)(vlSelf->in_a) 
+                                           + (IData)(vlSelf->carry_in)));
     }
     if (vlSelf->mode) {
         if (vlSelf->mode) {
-            vlSelf->alu_out = ALU__DOT__temp_l_out;
+            vlSelf->carry_out = 0U;
+            vlSelf->alu_out = alu__DOT__temp_l_out;
         }
     } else {
-        vlSelf->alu_out = ALU__DOT__temp_a_out;
+        vlSelf->carry_out = alu__DOT__arithmetic_carry_out;
+        vlSelf->alu_out = alu__DOT__temp_a_out;
     }
 }
 
