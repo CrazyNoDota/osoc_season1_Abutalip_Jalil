@@ -78,7 +78,7 @@ module ArithmeticUnit(
 			4'b0000: {carry_out,alu_out} = {1'b0, in_a} + {15'b0, carry_in};
 			4'b0001: {carry_out,alu_out} = {1'b0,in_a} | {1'b0,in_b} + {15'b0, carry_in};
 			4'b0010: {carry_out,alu_out} = {1'b0, in_a} | {1'b0, (~in_b)} + {15'b0, carry_in};
-			4'b0011: {carry_out,alu_out} = -16'b0000000000000001 + {15'b0, carry_in};
+			4'b0011: {carry_out,alu_out} = {1'b1, 16'b0000000000000001} + {15'b0, carry_in};
 			4'b0100: {carry_out,alu_out} = {1'b0, in_a} | ({1'b0,in_a} & {1'b0, (~in_b)}) + {15'b0, carry_in};
 			4'b0101: {carry_out,alu_out} = ({1'b0,in_a} | {1'b0,in_b}) + (~({1'b0,in_a} & {1'b0,in_b})) + {15'b0, carry_in};
 			4'b0110: {carry_out,alu_out} = {1'b0,in_a} - {1'b0,in_b} - 1 + {15'b0, carry_in};
