@@ -45,6 +45,8 @@ void Valu::_eval_settle(Valu__Syms* __restrict vlSymsp) {
     Valu* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
     // Body
     vlTOPp->_combo__TOP__1(vlSymsp);
+    vlTOPp->__Vm_traceActivity[1U] = 1U;
+    vlTOPp->__Vm_traceActivity[0U] = 1U;
 }
 
 void Valu::_ctor_var_reset() {
@@ -61,4 +63,7 @@ void Valu::_ctor_var_reset() {
     alu__DOT__temp_a_out = VL_RAND_RESET_I(16);
     alu__DOT__temp_l_out = VL_RAND_RESET_I(16);
     alu__DOT__arithmetic_carry_out = VL_RAND_RESET_I(1);
+    { int __Vi0=0; for (; __Vi0<2; ++__Vi0) {
+            __Vm_traceActivity[__Vi0] = VL_RAND_RESET_I(1);
+    }}
 }

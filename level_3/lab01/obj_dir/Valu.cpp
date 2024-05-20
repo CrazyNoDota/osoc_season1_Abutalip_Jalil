@@ -22,6 +22,7 @@ void Valu::eval_step() {
     QData __Vchange = 1;
     do {
         VL_DEBUG_IF(VL_DBG_MSGF("+ Clock loop\n"););
+        vlSymsp->__Vm_activity = true;
         _eval(vlSymsp);
         if (VL_UNLIKELY(++__VclockLoop > 100)) {
             // About to fail, so enable debug to see what's not settling.
@@ -42,6 +43,7 @@ void Valu::eval_step() {
 void Valu::_eval_initial_loop(Valu__Syms* __restrict vlSymsp) {
     vlSymsp->__Vm_didInit = true;
     _eval_initial(vlSymsp);
+    vlSymsp->__Vm_activity = true;
     // Evaluate till stable
     int __VclockLoop = 0;
     QData __Vchange = 1;
@@ -453,6 +455,7 @@ void Valu::_eval(Valu__Syms* __restrict vlSymsp) {
     Valu* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
     // Body
     vlTOPp->_combo__TOP__1(vlSymsp);
+    vlTOPp->__Vm_traceActivity[1U] = 1U;
 }
 
 VL_INLINE_OPT QData Valu::_change_request(Valu__Syms* __restrict vlSymsp) {
