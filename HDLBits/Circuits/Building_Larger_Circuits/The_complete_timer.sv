@@ -6,7 +6,7 @@ module top_module (
     output counting,
     output done,
     input ack );
-  logic [3:0] state, next_state;
+    logic [3:0] state, next_state;
     parameter S0 = 4'd0, S1 = 4'd1, S2 = 4'd2, S3 = 4'd3, B0 = 4'd4, COUNT = 4'd5, WAIT = 4'd6, B1 = 4'd7, B2 = 4'd8, B3 = 4'd9;
     logic shift_ena, done_counting;
     logic [15:0] timer_cnt;
@@ -56,9 +56,40 @@ module top_module (
            delay <= 0; 
         end 
         else begin
-            if(state == shift_ena) begin
-                delay <= {delay[2:0], data} 
+            if(shift_ena) begin
+                delay <= {delay[2:0], data};
             end
+        end
+    end
+    
+    always@(posedge clk) begin
+        if(reset) begin
+           timer_cnt <= 0;
+        end 
+        else begin
+            timer_cnt <= (counting) ? timer_cnt + 1 : 0;
+        end
+    end
+    
+    always@(posedge clk) begin
+        if(reset) begin
+            done_counting <= 0;
+        end
+        else if(counting) begin
+        	done_counting <= (((delay + 1) * 1000) - 1 == timer_cnt + 1); 
+ 
+        end
+    end
+    
+    always@(posedge clk) begin
+        if(reset) begin
+           count <= 0; 
+        end
+        else if(shift_ena) begin
+            count <= {delay[2:0], data} - (timer_cnt+1) / 1000;
+        end
+        else begin
+            count <= delay - (timer_cnt+1) / 1000; 
         end
     end
 
