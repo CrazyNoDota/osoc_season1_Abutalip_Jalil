@@ -38,6 +38,15 @@ module ControlUnit(
                     en_s = 1;
                     next_state = S1;
                     en_c = 0;
+                    en_0 = 0;
+                    en_1 = 0;
+                    en_2 = 0;
+                    en_3 = 0;
+                    en_4 = 0;
+                    en_5 = 0;
+                    en_6 = 0;
+                    en_7 = 0;
+                    done = 0;
                 end
                 S1: begin
                     mux_sel = instruction[12:10];
@@ -47,12 +56,12 @@ module ControlUnit(
                     alu_mode = instruction[2];
                     done = 0;
                     next_state = S2;
+                    
                 end
-                S3: begin
+                S2: begin
                     done = 1;
                     next_state = S0;
                     case(instruction[15:13]):
-                        
                         4'd1: en_0 = 1;
                         4'd2: en_1 = 1;
                         4'd3: en_2 = 1;

@@ -26,6 +26,7 @@ module mux(
             4'd7: out = reg6;
             4'd8: out = reg7;
             4'd9: out = regA;
+            default: out = 16'd0;
         endcase
     end
 endmodule
