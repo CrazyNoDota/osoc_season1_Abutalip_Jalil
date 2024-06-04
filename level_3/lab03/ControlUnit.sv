@@ -6,17 +6,17 @@ module ControlUnit(
     output logic [3:0] alu_sel,
     output logic [3:0] mux_sel,
     output mode,
-    output en_s,
-    output en_c,
-    output en_0,
-    output en_1,
-    output en_2,
-    output en_3,
-    output en_4,
-    output en_5,
-    output en_6,
-    output en_7,
-    output en_inst,
+    output en_s, // reg_en[1] d_in[0] 
+    output en_c, // d_in[1]
+    output en_0, // d_in[2]
+    output en_1, //3
+    output en_2, //4
+    output en_3, //5
+    output en_4, //6
+    output en_5, //7
+    output en_6, //8
+    output en_7, //9
+    output en_inst, //10
     output logic done
 );
 
