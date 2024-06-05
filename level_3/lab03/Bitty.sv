@@ -108,7 +108,7 @@ module Bitty(
     logic [15:0] alu_out;
     alu alu1(
         .carry_in(carry_in),
-        .in_a(regS),
+        .in_a(d_out[0]),
         .in_b(mux_out),
         .sel(alu_sel),
         .mode(mode),
