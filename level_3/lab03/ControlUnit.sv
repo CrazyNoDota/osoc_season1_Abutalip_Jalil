@@ -6,10 +6,10 @@ module ControlUnit(
     output logic [3:0] alu_sel,
     output logic [3:0] mux_sel,
     output mode,
-    output en_s, // reg_en[1] d_in[0] 
-    output en_c, // d_in[1]
-    output en_0, // d_in[2]
-    output en_1, //3
+    output en_s, // reg_en[0] d_in[0] 
+    output en_c, // d_in[1] reg_en[1]
+    output en_0, // d_in[2] reg_en[2]
+    output en_1, //3 d_in[3] reg_en[3]
     output en_2, //4
     output en_3, //5
     output en_4, //6
@@ -32,7 +32,7 @@ module ControlUnit(
     end
 
     always@(*) begin
-        case(state):
+        case(state)
                 S0: begin 
                     mux_sel = instruction[15:13];
                     en_s = 1;
@@ -47,6 +47,7 @@ module ControlUnit(
                     en_6 = 0;
                     en_7 = 0;
                     done = 0;
+                    en_inst = 0;
                 end
                 S1: begin
                     mux_sel = instruction[12:10];
@@ -61,6 +62,7 @@ module ControlUnit(
                 S2: begin
                     done = 1;
                     next_state = S0;
+                    en_inst = 1;
                     case(instruction[15:13]):
                         4'd1: en_0 = 1;
                         4'd2: en_1 = 1;

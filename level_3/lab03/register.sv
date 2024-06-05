@@ -7,7 +7,7 @@ module register(
 
     always@(posedge clk) begin
         if(enable) begin
-            in <= out;
+            out <= in;
         end
     end
 

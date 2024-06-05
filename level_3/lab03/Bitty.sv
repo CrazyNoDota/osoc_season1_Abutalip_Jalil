@@ -8,33 +8,94 @@ module Bitty(
     logic [15:0] d_in[7:0];
     logic reg_en [7:0];
 
-    //wire [15:0] mux_out_in;
-    wire en_regS;
+    //wire [15:0] mux_out_in; // forgot why do I need it
     register regC (
         .clk(clk),
-        .enable(reg_en[0]),
+        .enable(reg_en[1]),
         .in(d_in[1]),
-        .out(d_out[2])
+        .out(d_out[1])
     );
 
     register regS(
         .clk(clk),
-        .enable(en_regS),
-        .in(),
-        .out()
+        .enable(reg_en[0]),
+        .in(d_in[0]),
+        .out(d_out[0])
     );
+
+    
+    register reg0(
+        .clk(clk),
+        .enable(reg_en[2]),
+        .in(d_in[2]),
+        .in(d_out[2])
+    );
+     register reg1(
+        .clk(clk),
+        .enable(reg_en[3]),
+        .in(d_in[3]),
+        .in(d_out[3])
+    );
+    register reg2(
+        .clk(clk),
+        .enable(reg_en[4]),
+        .in(d_in[4]),
+        .in(d_out[4])
+    );
+    register reg3(
+        .clk(clk),
+        .enable(reg_en[5]),
+        .in(d_in[5]),
+        .in(d_out[5])
+    );
+    
+    register reg4(
+        .clk(clk),
+        .enable(reg_en[6]),
+        .in(d_in[6]),
+        .in(d_out[6])
+    );
+     register reg5(
+        .clk(clk),
+        .enable(reg_en[7]),
+        .in(d_in[7]),
+        .in(d_out[7])
+    );
+    register reg6(
+        .clk(clk),
+        .enable(reg_en[8]),
+        .in(d_in[8]),
+        .in(d_out[8])
+    );
+    register reg7(
+        .clk(clk),
+        .enable(reg_en[9]),
+        .in(d_in[9]),
+        .in(d_out[9])
+    );
+
+    register reg_inst(
+        .clk(clk),
+        .enable(reg_en[10]),
+        .in(d_in[10]),
+        .in(d_out[10])
+    );
+
+
+    
+
     logic [3:0] mux_sel;
     logic [15:0] mux_out;
     mux mux1(
-        .regC(regC),
-        .reg0(reg0),
-        .reg1(reg1),
-        .reg2(reg2),
-        .reg3(reg3),
-        .reg4(reg4),
-        .reg5(reg5),
-        .reg6(reg6),
-        .reg7(reg7),
+        .regC(d_out[1]),
+        .reg0(d_out[2]),
+        .reg1(d_out[3]),
+        .reg2(d_out[4]),
+        .reg3(d_out[5]),
+        .reg4(d_out[6]),
+        .reg5(d_out[7]),
+        .reg6(d_out[8]),
+        .reg7(d_out[9]),
         .regA(regA),
         .sel(mux_sel),
         .out(mux_out)
@@ -64,17 +125,17 @@ module Bitty(
         .alu_sel(alu_sel),
         .mux_sel(mux_sel),
         .mode(mode),
-        .en_s(en_regS),
-        .en_c(reg_en[0]),
-        .en_0(reg_en[1]),
-        .en_1(reg_en[2]),
-        .en_2(reg_en[3]),
-        .en_3(reg_en[4]),
-        .en_4(reg_en[5]),
-        .en_5(reg_en[6]),
-        .en_6(reg_en[7]),
-        .en_7(reg_en[8]),
-        .en_inst(),
+        .en_s(reg_en[0]),
+        .en_c(reg_en[1]),
+        .en_0(reg_en[2]),
+        .en_1(reg_en[3]),
+        .en_2(reg_en[4]),
+        .en_3(reg_en[5]),
+        .en_4(reg_en[6]),
+        .en_5(reg_en[7]),
+        .en_6(reg_en[8]),
+        .en_7(reg_en[9]),
+        .en_inst(reg_en[10]),
         .done(done)
 
     );
