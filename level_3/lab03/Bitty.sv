@@ -2,8 +2,9 @@ module Bitty(
     input logic clk,
     input logic reset,
     input logic [15:0] din,
-    output logic done
+    output done
 );
+    logic wire_done = done;
     logic [15:0] d_out[7:0];
     logic [15:0] d_in[7:0];
     logic reg_en [7:0];
@@ -28,57 +29,57 @@ module Bitty(
         .clk(clk),
         .enable(reg_en[2]),
         .in(d_in[2]),
-        .in(d_out[2])
+        .out(d_out[2])
     );
      register reg1(
         .clk(clk),
         .enable(reg_en[3]),
         .in(d_in[3]),
-        .in(d_out[3])
+        .out(d_out[3])
     );
     register reg2(
         .clk(clk),
         .enable(reg_en[4]),
         .in(d_in[4]),
-        .in(d_out[4])
+        .out(d_out[4])
     );
     register reg3(
         .clk(clk),
         .enable(reg_en[5]),
         .in(d_in[5]),
-        .in(d_out[5])
+        .out(d_out[5])
     );
     
     register reg4(
         .clk(clk),
         .enable(reg_en[6]),
         .in(d_in[6]),
-        .in(d_out[6])
+        .out(d_out[6])
     );
      register reg5(
         .clk(clk),
         .enable(reg_en[7]),
         .in(d_in[7]),
-        .in(d_out[7])
+        .out(d_out[7])
     );
     register reg6(
         .clk(clk),
         .enable(reg_en[8]),
         .in(d_in[8]),
-        .in(d_out[8])
+        .out(d_out[8])
     );
     register reg7(
         .clk(clk),
         .enable(reg_en[9]),
         .in(d_in[9]),
-        .in(d_out[9])
+        .out(d_out[9])
     );
 
     register reg_inst(
         .clk(clk),
         .enable(reg_en[10]),
         .in(d_in[10]),
-        .in(d_out[10])
+        .out(d_out[10])
     );
 
 
@@ -96,12 +97,12 @@ module Bitty(
         .reg5(d_out[7]),
         .reg6(d_out[8]),
         .reg7(d_out[9]),
-        .regA(regA),
+        .regA(d_out[10]),
         .sel(mux_sel),
         .out(mux_out)
     );
     logic carry_in;
-    logic alu_sel[3:0];
+    logic [3:0] alu_sel;
     logic mode;
     logic carry_out;
     logic compare;
@@ -136,7 +137,7 @@ module Bitty(
         .en_6(reg_en[8]),
         .en_7(reg_en[9]),
         .en_inst(reg_en[10]),
-        .done(done)
+        .done(wire_done)
 
     );
 

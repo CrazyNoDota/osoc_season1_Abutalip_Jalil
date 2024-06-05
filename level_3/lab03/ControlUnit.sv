@@ -4,7 +4,7 @@ module ControlUnit(
     input logic [15:0] instruction,
     input run,
     output logic [3:0] alu_sel,
-    output logic [3:0] mux_sel,
+    output logic [2:0] mux_sel,
     output mode,
     output en_s, // reg_en[0] d_in[0] 
     output en_c, // d_in[1] reg_en[1]
@@ -54,7 +54,7 @@ module ControlUnit(
                     en_s = 0;
                     en_c = 1;
                     alu_sel = instruction[6:3];
-                    alu_mode = instruction[2];
+                    mode = instruction[2];
                     done = 0;
                     next_state = S2;
                     
@@ -63,18 +63,19 @@ module ControlUnit(
                     done = 1;
                     next_state = S0;
                     en_inst = 1;
-                    case(instruction[15:13]):
-                        4'd1: en_0 = 1;
-                        4'd2: en_1 = 1;
-                        4'd3: en_2 = 1;
-                        4'd4: en_3 = 1;
-                        4'd5: en_4 = 1;
-                        4'd6: en_5 = 1;
-                        4'd7: en_6 = 1;
-                        4'd8: en_7 = 1;
+                    case(instruction[15:13])
+                        4'd0: en_0 = 1;
+                        4'd1: en_1 = 1;
+                        4'd2: en_2 = 1;
+                        4'd3: en_3 = 1;
+                        4'd4: en_4 = 1;
+                        4'd5: en_5 = 1;
+                        4'd6: en_6 = 1;
+                        4'd7: en_7 = 1;
 
                     endcase
                 end
+        endcase
 
     end
 

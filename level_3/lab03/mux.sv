@@ -15,7 +15,7 @@ module mux(
     
 
     always@(*) begin
-        case(sel):
+        case(sel)
             4'd0: out = regC;
             4'd1: out = reg0;
             4'd2: out = reg1;
