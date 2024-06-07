@@ -5,9 +5,9 @@ module Bitty(
     output done
 );
     logic wire_done = done;
-    logic [15:0] d_out[7:0];
-    logic [15:0] d_in[7:0];
-    logic reg_en [7:0];
+    logic [15:0] d_out[10:0];
+    logic [15:0] d_in[10:0];
+    logic reg_en [10:0];
 
     //wire [15:0] mux_out_in; // forgot why do I need it
     register regC (
