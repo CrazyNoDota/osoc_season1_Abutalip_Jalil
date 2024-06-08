@@ -64,17 +64,19 @@ module ControlUnit(
                     next_state = S0;
                     en_inst = 1;
                     case(instruction[15:13])
-                        4'd0: en_0 = 1;
-                        4'd1: en_1 = 1;
-                        4'd2: en_2 = 1;
-                        4'd3: en_3 = 1;
-                        4'd4: en_4 = 1;
-                        4'd5: en_5 = 1;
-                        4'd6: en_6 = 1;
-                        4'd7: en_7 = 1;
+                        3'd0: en_0 = 1;
+                        3'd1: en_1 = 1;
+                        3'd2: en_2 = 1;
+                        3'd3: en_3 = 1;
+                        3'd4: en_4 = 1;
+                        3'd5: en_5 = 1;
+                        3'd6: en_6 = 1;
+                        3'd7: en_7 = 1;
 
                     endcase
                 end
+                default: next_state = S0;
+
         endcase
 
     end
