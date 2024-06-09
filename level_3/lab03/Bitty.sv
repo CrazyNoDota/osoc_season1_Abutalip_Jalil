@@ -85,10 +85,9 @@ module Bitty(
 
     
 
-    logic [3:0] mux_sel;
+    logic [2:0] mux_sel;
     logic [15:0] mux_out;
     mux mux1(
-        .regC(d_out[1]),
         .reg0(d_out[2]),
         .reg1(d_out[3]),
         .reg2(d_out[4]),
@@ -97,7 +96,6 @@ module Bitty(
         .reg5(d_out[7]),
         .reg6(d_out[8]),
         .reg7(d_out[9]),
-        .regA(d_out[10]),
         .sel(mux_sel),
         .out(mux_out)
     );

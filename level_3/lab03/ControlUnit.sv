@@ -20,7 +20,7 @@ module ControlUnit(
     output logic done
 );
 
-    typedef enum logic [1:0] {S0, S1, S2} state_t;
+    typedef enum logic [1:0] {S0, S1, S2, Idle} state_t;
     state_t state, next_state;
 
     always@(posedge clk) begin
@@ -33,6 +33,10 @@ module ControlUnit(
 
     always@(*) begin
         case(state)
+                Idle: begin
+                    next_state = S0;
+                    en_inst = 1;
+                end
                 S0: begin 
                     mux_sel = instruction[15:13];
                     en_s = 1;
@@ -61,7 +65,7 @@ module ControlUnit(
                 end
                 S2: begin
                     done = 1;
-                    next_state = S0;
+                    next_state = Idle;
                     en_inst = 1;
                     case(instruction[15:13])
                         3'd0: en_0 = 1;

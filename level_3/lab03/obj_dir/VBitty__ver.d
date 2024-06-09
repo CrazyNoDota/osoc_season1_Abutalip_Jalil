@@ -1,0 +1,1 @@
+obj_dir/VBitty.cpp obj_dir/VBitty.h obj_dir/VBitty.mk obj_dir/VBitty__Slow.cpp obj_dir/VBitty__Syms.cpp obj_dir/VBitty__Syms.h obj_dir/VBitty__ver.d obj_dir/VBitty_classes.mk  : /usr/bin/verilator_bin /usr/bin/verilator_bin ArithmeticUnit.sv Bitty.sv ControlUnit.sv LogicUnit.sv alu.sv mux.sv register.sv 
