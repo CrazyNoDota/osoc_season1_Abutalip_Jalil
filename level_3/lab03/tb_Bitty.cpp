@@ -1,21 +1,122 @@
 #include <verilated.h>
 #include "Valu.h"
 #include "verilated_vcd_c.h"
+#include<VBitty.h>
+#include<iostream>
+#include<cstdlib>
+#include<ctime>
 
 #define MAX_SIM_CYCLES 300
 
 class Bitty{
-    uint32_t registers[12];
-    uint32_t din;
+    uint16_t registers[12];
+    uint32_t result;
     public: 
-        Bitty() = default;
-        void Evaluate(int32_t din){
+        
+        uint16_t Evaluate(int Rx, int Ry, int alu_sel, int mode){
+            int output = 0;
+            if(mode == 1){ // Logic
+                switch (alu_sel)
+                {
+                case 0: output = ~Rx;
+                    break;
+                case 1: output = ~(Rx + Ry);
+                    break;
+                case 2: output = (~Rx & (Ry));
+                    break;
+                case 3: output = 0;
+                    break;
+                case 4: output = ~(A & B);
+                    break;
+                case 5: output = ~Ry;
+                    break;
+                case 6: output = Rx ^ Ry;
+                    break;
+                case 7: output = Rx & (~Ry);
+                    break;
+                case 8: output = (~Rx) | (Ry);
+                    break;
+                case 9: output = ~(Rx ^ Ry);
+                    break;
+                case 10: output = (Ry);
+                    break;
+                case 11: output = Rx & Ry;
+                    break;
+                case 12: output = 1;
+                    break;
+                case 13: output = Rx | (~Ry);
+                    break;
+                case 14: output = Rx | Ry;
+                    break;
+                case 15: output = Rx;
+                    break;
+                default: output = 4;
+                    break;
+                }
+            }else{
+                
+                switch (alu_sel)
+                {
+                case 0: output = Rx;
+                    break;
+                case 1: output = Rx | Ry;
+                    break;
+                case 2: output = Rx | (~Ry);
+                    break;
+                case 3: output = -1;
+                    break;
+                case 4: output = Rx | (Rx&(~Ry));
+                    break;
+                case 5: output = (Rx | Ry) + Rx&(~Ry);
+                    break;
+                case 6: output = Rx - Ry - 1;
+                    break;
+                case 7: output = Rx&(~Ry) - 1;
+                    break;
+                case 8: output = Rx + Rx&Ry;
+                    break;
+                case 9: output = Rx + Ry;
+                    break;
+                case 10: output = (Rx | (~Ry)) + (Rx&Ry);
+                    break;
+                case 11: output = (Rx & Ry) - 1;
+                    break;
+                case 12: output = (Rx + Rx);
+                    break;
+                case 13: output = (Rx | Ry) + Rx;
+                    break;
+                case 14: output = (Rx + (~Ry)) + Rx;
+                    break;
+                case 15: output = Rx - 1;
+                    break;
+                
+                default:
+                    break;
+                }
             
+            }
+
+            return output;
         }
         
+        uint32_t print(){
+            return result;
+        }
         
-        int32_t generate_inst(&din) {
-            int Rx   
+        int32_t generate_inst() {
+            uint16_t inst = 0;
+
+            srand(time(nullptr));
+            int Rx = rand() % 8;
+            int Ry = rand() % 8;
+            int alu_sel = rand() % 16;
+            int mode = rand() % 2;
+            inst |= (Rx << 13);
+            inst |= (Ry << 10);
+            inst |= (alu_sel << 3);
+            inst |= (mode << 2);
+
+            return inst;
         };
 
 }
@@ -40,5 +141,11 @@ int main (int argc, char **argv, char **env) {
         tfp->dump(i);
     }
     top->reset = 0;
+
+    for(int cycle = 0; cycle < 10000; cycle++){
+        
+        
+        
+    }
 
 }
