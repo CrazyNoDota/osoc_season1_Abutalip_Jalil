@@ -1,10 +1,11 @@
 #include <verilated.h>
 #include "Valu.h"
 #include "verilated_vcd_c.h"
-#include<VBitty.h>
 #include<iostream>
 #include<cstdlib>
 #include<ctime>
+#include <stdlib.h>
+#include "Valu___024unit.h"
 
 #define MAX_SIM_CYCLES 300
 
@@ -26,7 +27,7 @@ class Bitty{
                     break;
                 case 3: output = 0;
                     break;
-                case 4: output = ~(A & B);
+                case 4: output = ~(Rx & Ry);
                     break;
                 case 5: output = ~Ry;
                     break;
@@ -117,9 +118,9 @@ class Bitty{
             inst |= (mode << 2);
 
             return inst;
-        };
+        }
 
-}
+};
 
 int main (int argc, char **argv, char **env) {
 
@@ -144,7 +145,9 @@ int main (int argc, char **argv, char **env) {
 
     for(int cycle = 0; cycle < 10000; cycle++){
         
-        
+        top->clk ^= 1;
+
+
         
     }
 
