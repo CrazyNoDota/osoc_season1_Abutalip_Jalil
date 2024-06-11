@@ -2,7 +2,7 @@ module Bitty(
     input logic clk,
     input logic reset,
     input logic [15:0] din,
-    output logic done
+    output logic done,
 );
     
     logic [15:0] d_out[10:0];

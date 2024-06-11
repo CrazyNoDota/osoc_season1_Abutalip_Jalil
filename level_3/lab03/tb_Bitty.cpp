@@ -1,19 +1,19 @@
-#include <verilated.h>
 #include "VBitty.h"
+#include <verilated.h>
 #include "verilated_vcd_c.h"
 #include<iostream>
 #include<cstdlib>
 #include<ctime>
 #include <stdlib.h>
-#include "Valu___024unit.h"
 
 #define MAX_SIM_CYCLES 300
 
 class Bitty{
     uint16_t registers[12];
     uint32_t result;
-    int Rx, Ry, alu_sel, mode;
-    public: 
+    
+    public:
+        int Rx, Ry, alu_sel, mode;
         
         uint16_t evaluate(){
             int output = 0;
@@ -126,23 +126,14 @@ class Bitty{
 int main (int argc, char **argv, char **env) {
 
     Verilated::commandArgs(argc, argv);
-    Valu *top = new Valu;
+    VBitty *top = new VBitty;
 
     VerilatedVcdC* tfp = new VerilatedVcdC;
-    Varilated::traceEverOn(true);
+    Verilated::traceEverOn(true);
     top->trace(tfp, 99);
     tfp->open("waveform.vcd");
 
-    top->clk = 0;
-    top->reset = 1;
-    top->data = 0;
-
-    for(int i = 0; i < 10; i++){
-        top->clk ^= 1;
-        top->eval();
-        tfp->dump(i);
-    }
-    top->reset = 0;
+  
     Bitty bitty;
     for(int cycle = 0; cycle < 10000; cycle++){
         
@@ -152,7 +143,7 @@ int main (int argc, char **argv, char **env) {
             top->din = inst;
              
             if(bitty.evaluate() != top->d_out[bitty.Rx]){
-                cout<<"Failed testcase /n inst: "<<inst<<" cycle: "<<cycle<<" /n";
+                std::cout<<"Failed testcase /n inst: "<<inst<<" cycle: "<<cycle<<" /n";
             }
             
         }
