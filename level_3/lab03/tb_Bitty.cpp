@@ -12,9 +12,10 @@
 class Bitty{
     uint16_t registers[12];
     uint32_t result;
+    int Rx, Ry, alu_sel, mode;
     public: 
         
-        uint16_t Evaluate(int Rx, int Ry, int alu_sel, int mode){
+        uint16_t evaluate(){
             int output = 0;
             if(mode == 1){ // Logic
                 switch (alu_sel)
@@ -108,10 +109,10 @@ class Bitty{
             uint16_t inst = 0;
 
             srand(time(nullptr));
-            int Rx = rand() % 8;
-            int Ry = rand() % 8;
-            int alu_sel = rand() % 16;
-            int mode = rand() % 2;
+            Rx = rand() % 8;
+            Ry = rand() % 8;
+            alu_sel = rand() % 16;
+            mode = rand() % 2;
             inst |= (Rx << 13);
             inst |= (Ry << 10);
             inst |= (alu_sel << 3);
@@ -142,10 +143,19 @@ int main (int argc, char **argv, char **env) {
         tfp->dump(i);
     }
     top->reset = 0;
-
+    Bitty bitty;
     for(int cycle = 0; cycle < 10000; cycle++){
         
         top->clk ^= 1;
+        if(cycle % 4 == 0){
+            uint16_t inst = bitty.generate_inst();
+            top->din = inst;
+             
+            if(bitty.evaluate() != top->d_out[bitty.Rx]){
+                cout<<"Failed testcase /n inst: "<<inst<<" cycle: "<<cycle<<" /n";
+            }
+            
+        }
 
 
         

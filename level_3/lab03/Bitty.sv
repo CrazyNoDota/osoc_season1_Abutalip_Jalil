@@ -2,13 +2,14 @@ module Bitty(
     input logic clk,
     input logic reset,
     input logic [15:0] din,
-    output done
+    output logic done
 );
-    logic wire_done = done;
+    
     logic [15:0] d_out[10:0];
+    
     logic [15:0] d_in[10:0];
     logic reg_en [10:0];
-
+    assign d_in[1] = alu_out;
     //wire [15:0] mux_out_in; // forgot why do I need it
     register regC (
         .clk(clk),
@@ -135,7 +136,7 @@ module Bitty(
         .en_6(reg_en[8]),
         .en_7(reg_en[9]),
         .en_inst(reg_en[10]),
-        .done(wire_done)
+        .done(done)
 
     );
 
