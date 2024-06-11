@@ -1,5 +1,5 @@
 #include <verilated.h>
-#include "Valu.h"
+#include "VBitty.h"
 #include "verilated_vcd_c.h"
 #include<iostream>
 #include<cstdlib>
