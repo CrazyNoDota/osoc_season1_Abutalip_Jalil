@@ -28,6 +28,7 @@ VL_MODULE(VBitty) {
     VL_IN8(reset,0,0);
     VL_OUT8(done,0,0);
     VL_IN16(din,15,0);
+    VL_OUT16(dout[11],15,0);
     
     // LOCAL SIGNALS
     // Internals; generally not touched by application code

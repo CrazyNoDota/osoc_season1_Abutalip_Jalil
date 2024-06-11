@@ -9,12 +9,12 @@
 #define MAX_SIM_CYCLES 300
 
 class Bitty{
-    uint16_t registers[12];
+    
     uint32_t result;
     
     public:
         int Rx, Ry, alu_sel, mode;
-        
+        uint16_t registers[12];
         uint16_t evaluate(){
             int output = 0;
             if(mode == 1){ // Logic
@@ -135,21 +135,25 @@ int main (int argc, char **argv, char **env) {
 
   
     Bitty bitty;
-    for(int cycle = 0; cycle < 10000; cycle++){
+    for(int cycle = 0; cycle < 10; cycle++){
         
         top->clk ^= 1;
         if(cycle % 4 == 0){
             uint16_t inst = bitty.generate_inst();
             top->din = inst;
              
-            if(bitty.evaluate() != top->d_out[bitty.Rx]){
-                std::cout<<"Failed testcase /n inst: "<<inst<<" cycle: "<<cycle<<" /n";
+            if(bitty.evaluate() != top->dout[bitty.Rx]){
+                std::cout<<"Failed testcase real: "<<top->dout[bitty.Rx]<<" synthesis: "<<bitty.evaluate()<<" /n bitty.Rx = "<<bitty.Rx<<"\n";
             }
             
         }
+        top->eval();
+        tfp->dump(cycle);
 
 
         
     }
+    tfp->close();
+    delete top;
 
 }

@@ -48,10 +48,14 @@ void VBitty::traceInitSub0(void* userp, VerilatedVcd* tracep) {
         tracep->declBit(c+100,"reset", false,-1);
         tracep->declBus(c+101,"din", false,-1, 15,0);
         tracep->declBit(c+102,"done", false,-1);
+        {int i; for (i=0; i<11; i++) {
+                tracep->declBus(c+103+i*1,"dout", true,(i+0), 15,0);}}
         tracep->declBit(c+99,"Bitty clk", false,-1);
         tracep->declBit(c+100,"Bitty reset", false,-1);
         tracep->declBus(c+101,"Bitty din", false,-1, 15,0);
         tracep->declBit(c+102,"Bitty done", false,-1);
+        {int i; for (i=0; i<11; i++) {
+                tracep->declBus(c+103+i*1,"Bitty dout", true,(i+0), 15,0);}}
         {int i; for (i=0; i<11; i++) {
                 tracep->declBus(c+1+i*1,"Bitty d_out", true,(i+0), 15,0);}}
         {int i; for (i=0; i<11; i++) {
@@ -60,13 +64,13 @@ void VBitty::traceInitSub0(void* userp, VerilatedVcd* tracep) {
                 tracep->declBit(c+37+i*1,"Bitty reg_en", true,(i+0));}}
         tracep->declBus(c+71,"Bitty mux_sel", false,-1, 2,0);
         tracep->declBus(c+72,"Bitty mux_out", false,-1, 15,0);
-        tracep->declBit(c+103,"Bitty carry_in", false,-1);
+        tracep->declBit(c+114,"Bitty carry_in", false,-1);
         tracep->declBus(c+73,"Bitty alu_sel", false,-1, 3,0);
         tracep->declBit(c+74,"Bitty mode", false,-1);
         tracep->declBit(c+75,"Bitty carry_out", false,-1);
         tracep->declBit(c+48,"Bitty compare", false,-1);
         tracep->declBus(c+76,"Bitty alu_out", false,-1, 15,0);
-        tracep->declBit(c+104,"Bitty run", false,-1);
+        tracep->declBit(c+115,"Bitty run", false,-1);
         tracep->declBit(c+99,"Bitty regC clk", false,-1);
         tracep->declBit(c+49,"Bitty regC enable", false,-1);
         tracep->declBus(c+77,"Bitty regC in", false,-1, 15,0);
@@ -121,7 +125,7 @@ void VBitty::traceInitSub0(void* userp, VerilatedVcd* tracep) {
         tracep->declBus(c+30,"Bitty mux1 reg7", false,-1, 15,0);
         tracep->declBus(c+71,"Bitty mux1 sel", false,-1, 2,0);
         tracep->declBus(c+72,"Bitty mux1 out", false,-1, 15,0);
-        tracep->declBit(c+103,"Bitty alu1 carry_in", false,-1);
+        tracep->declBit(c+114,"Bitty alu1 carry_in", false,-1);
         tracep->declBus(c+31,"Bitty alu1 in_a", false,-1, 15,0);
         tracep->declBus(c+72,"Bitty alu1 in_b", false,-1, 15,0);
         tracep->declBus(c+73,"Bitty alu1 sel", false,-1, 3,0);
@@ -132,7 +136,7 @@ void VBitty::traceInitSub0(void* userp, VerilatedVcd* tracep) {
         tracep->declBus(c+88,"Bitty alu1 temp_a_out", false,-1, 15,0);
         tracep->declBus(c+89,"Bitty alu1 temp_l_out", false,-1, 15,0);
         tracep->declBit(c+90,"Bitty alu1 arithmetic_carry_out", false,-1);
-        tracep->declBit(c+103,"Bitty alu1 myArithUnit carry_in", false,-1);
+        tracep->declBit(c+114,"Bitty alu1 myArithUnit carry_in", false,-1);
         tracep->declBus(c+31,"Bitty alu1 myArithUnit in_a", false,-1, 15,0);
         tracep->declBus(c+72,"Bitty alu1 myArithUnit in_b", false,-1, 15,0);
         tracep->declBus(c+73,"Bitty alu1 myArithUnit sel", false,-1, 3,0);
@@ -145,7 +149,7 @@ void VBitty::traceInitSub0(void* userp, VerilatedVcd* tracep) {
         tracep->declBit(c+99,"Bitty ControlUnit1 clk", false,-1);
         tracep->declBit(c+100,"Bitty ControlUnit1 reset", false,-1);
         tracep->declBus(c+101,"Bitty ControlUnit1 instruction", false,-1, 15,0);
-        tracep->declBit(c+104,"Bitty ControlUnit1 run", false,-1);
+        tracep->declBit(c+115,"Bitty ControlUnit1 run", false,-1);
         tracep->declBus(c+73,"Bitty ControlUnit1 alu_sel", false,-1, 3,0);
         tracep->declBus(c+71,"Bitty ControlUnit1 mux_sel", false,-1, 2,0);
         tracep->declBit(c+74,"Bitty ControlUnit1 mode", false,-1);
@@ -325,7 +329,18 @@ void VBitty::traceFullSub0(void* userp, VerilatedVcd* tracep) {
         tracep->fullBit(oldp+100,(vlTOPp->reset));
         tracep->fullSData(oldp+101,(vlTOPp->din),16);
         tracep->fullBit(oldp+102,(vlTOPp->done));
-        tracep->fullBit(oldp+103,(vlTOPp->Bitty__DOT__carry_in));
-        tracep->fullBit(oldp+104,(vlTOPp->Bitty__DOT__run));
+        tracep->fullSData(oldp+103,(vlTOPp->dout[0]),16);
+        tracep->fullSData(oldp+104,(vlTOPp->dout[1]),16);
+        tracep->fullSData(oldp+105,(vlTOPp->dout[2]),16);
+        tracep->fullSData(oldp+106,(vlTOPp->dout[3]),16);
+        tracep->fullSData(oldp+107,(vlTOPp->dout[4]),16);
+        tracep->fullSData(oldp+108,(vlTOPp->dout[5]),16);
+        tracep->fullSData(oldp+109,(vlTOPp->dout[6]),16);
+        tracep->fullSData(oldp+110,(vlTOPp->dout[7]),16);
+        tracep->fullSData(oldp+111,(vlTOPp->dout[8]),16);
+        tracep->fullSData(oldp+112,(vlTOPp->dout[9]),16);
+        tracep->fullSData(oldp+113,(vlTOPp->dout[10]),16);
+        tracep->fullBit(oldp+114,(vlTOPp->Bitty__DOT__carry_in));
+        tracep->fullBit(oldp+115,(vlTOPp->Bitty__DOT__run));
     }
 }

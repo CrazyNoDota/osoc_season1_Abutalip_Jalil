@@ -164,6 +164,17 @@ void VBitty::traceChgSub0(void* userp, VerilatedVcd* tracep) {
         tracep->chgBit(oldp+99,(vlTOPp->reset));
         tracep->chgSData(oldp+100,(vlTOPp->din),16);
         tracep->chgBit(oldp+101,(vlTOPp->done));
+        tracep->chgSData(oldp+102,(vlTOPp->dout[0]),16);
+        tracep->chgSData(oldp+103,(vlTOPp->dout[1]),16);
+        tracep->chgSData(oldp+104,(vlTOPp->dout[2]),16);
+        tracep->chgSData(oldp+105,(vlTOPp->dout[3]),16);
+        tracep->chgSData(oldp+106,(vlTOPp->dout[4]),16);
+        tracep->chgSData(oldp+107,(vlTOPp->dout[5]),16);
+        tracep->chgSData(oldp+108,(vlTOPp->dout[6]),16);
+        tracep->chgSData(oldp+109,(vlTOPp->dout[7]),16);
+        tracep->chgSData(oldp+110,(vlTOPp->dout[8]),16);
+        tracep->chgSData(oldp+111,(vlTOPp->dout[9]),16);
+        tracep->chgSData(oldp+112,(vlTOPp->dout[10]),16);
     }
 }
 

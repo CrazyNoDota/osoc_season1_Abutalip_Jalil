@@ -34,6 +34,7 @@ module ControlUnit(
     always@(*) begin
         case(state)
                 IDLE: begin
+                    done = 1;
                     next_state = S0;
                     en_inst = 1;
                 end

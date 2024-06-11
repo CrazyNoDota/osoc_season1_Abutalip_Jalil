@@ -3,8 +3,9 @@ module Bitty(
     input logic reset,
     input logic [15:0] din,
     output logic done,
+    output logic [15:0] dout[10:0]
 );
-    
+    assign dout = d_out;
     logic [15:0] d_out[10:0];
     
     logic [15:0] d_in[10:0];

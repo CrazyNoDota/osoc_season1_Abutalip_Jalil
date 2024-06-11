@@ -73,6 +73,10 @@ VL_INLINE_OPT void VBitty::_sequent__TOP__1(VBitty__Syms* __restrict vlSymsp) {
     if (vlTOPp->reset) {
         vlTOPp->done = 0U;
     }
+    if (vlTOPp->reset) {
+        vlTOPp->Bitty__DOT__ControlUnit1__DOT__state = 0U;
+    }
+    vlTOPp->Bitty__DOT__ControlUnit1__DOT__state = vlTOPp->Bitty__DOT__ControlUnit1__DOT__next_state;
     if (vlTOPp->Bitty__DOT__reg_en[0xaU]) {
         vlTOPp->Bitty__DOT____Vcellout__reg_inst__out 
             = vlTOPp->Bitty__DOT__d_in[0xaU];
@@ -117,33 +121,13 @@ VL_INLINE_OPT void VBitty::_sequent__TOP__1(VBitty__Syms* __restrict vlSymsp) {
         vlTOPp->Bitty__DOT____Vcellout__regC__out = 
             vlTOPp->Bitty__DOT__d_in[1U];
     }
-    if (vlTOPp->reset) {
-        vlTOPp->Bitty__DOT__ControlUnit1__DOT__state = 0U;
-    }
-    vlTOPp->Bitty__DOT__ControlUnit1__DOT__state = vlTOPp->Bitty__DOT__ControlUnit1__DOT__next_state;
-    vlTOPp->Bitty__DOT__d_out[0xaU] = vlTOPp->Bitty__DOT____Vcellout__reg_inst__out;
-    vlTOPp->Bitty__DOT__d_out[9U] = vlTOPp->Bitty__DOT____Vcellout__reg7__out;
-    vlTOPp->Bitty__DOT__d_out[8U] = vlTOPp->Bitty__DOT____Vcellout__reg6__out;
-    vlTOPp->Bitty__DOT__d_out[7U] = vlTOPp->Bitty__DOT____Vcellout__reg5__out;
-    vlTOPp->Bitty__DOT__d_out[6U] = vlTOPp->Bitty__DOT____Vcellout__reg4__out;
-    vlTOPp->Bitty__DOT__d_out[5U] = vlTOPp->Bitty__DOT____Vcellout__reg3__out;
-    vlTOPp->Bitty__DOT__d_out[4U] = vlTOPp->Bitty__DOT____Vcellout__reg2__out;
-    vlTOPp->Bitty__DOT__d_out[3U] = vlTOPp->Bitty__DOT____Vcellout__reg1__out;
-    vlTOPp->Bitty__DOT__d_out[2U] = vlTOPp->Bitty__DOT____Vcellout__reg0__out;
-    vlTOPp->Bitty__DOT__d_out[0U] = vlTOPp->Bitty__DOT____Vcellout__regS__out;
-    vlTOPp->Bitty__DOT__d_out[1U] = vlTOPp->Bitty__DOT____Vcellout__regC__out;
     vlTOPp->Bitty__DOT__ControlUnit1__DOT__next_state 
         = ((2U & (IData)(vlTOPp->Bitty__DOT__ControlUnit1__DOT__state))
             ? ((1U & (IData)(vlTOPp->Bitty__DOT__ControlUnit1__DOT__state))
                 ? 0U : 3U) : ((1U & (IData)(vlTOPp->Bitty__DOT__ControlUnit1__DOT__state))
                                ? 2U : 1U));
-    if ((2U & (IData)(vlTOPp->Bitty__DOT__ControlUnit1__DOT__state))) {
-        if ((1U & (~ (IData)(vlTOPp->Bitty__DOT__ControlUnit1__DOT__state)))) {
-            vlTOPp->done = 1U;
-        }
-    } else {
-        vlTOPp->done = 0U;
-    }
+    vlTOPp->done = (1U & ((IData)(vlTOPp->Bitty__DOT__ControlUnit1__DOT__state) 
+                          >> 1U));
     if ((1U & (~ ((IData)(vlTOPp->Bitty__DOT__ControlUnit1__DOT__state) 
                   >> 1U)))) {
         vlTOPp->Bitty__DOT____Vcellout__ControlUnit1__en_c 
@@ -161,9 +145,31 @@ VL_INLINE_OPT void VBitty::_sequent__TOP__1(VBitty__Syms* __restrict vlSymsp) {
         vlTOPp->Bitty__DOT____Vcellout__ControlUnit1__en_s 
             = (1U & (~ (IData)(vlTOPp->Bitty__DOT__ControlUnit1__DOT__state)));
     }
+    vlTOPp->Bitty__DOT__d_out[0xaU] = vlTOPp->Bitty__DOT____Vcellout__reg_inst__out;
+    vlTOPp->Bitty__DOT__d_out[9U] = vlTOPp->Bitty__DOT____Vcellout__reg7__out;
+    vlTOPp->Bitty__DOT__d_out[8U] = vlTOPp->Bitty__DOT____Vcellout__reg6__out;
+    vlTOPp->Bitty__DOT__d_out[7U] = vlTOPp->Bitty__DOT____Vcellout__reg5__out;
+    vlTOPp->Bitty__DOT__d_out[6U] = vlTOPp->Bitty__DOT____Vcellout__reg4__out;
+    vlTOPp->Bitty__DOT__d_out[5U] = vlTOPp->Bitty__DOT____Vcellout__reg3__out;
+    vlTOPp->Bitty__DOT__d_out[4U] = vlTOPp->Bitty__DOT____Vcellout__reg2__out;
+    vlTOPp->Bitty__DOT__d_out[3U] = vlTOPp->Bitty__DOT____Vcellout__reg1__out;
+    vlTOPp->Bitty__DOT__d_out[2U] = vlTOPp->Bitty__DOT____Vcellout__reg0__out;
+    vlTOPp->Bitty__DOT__d_out[0U] = vlTOPp->Bitty__DOT____Vcellout__regS__out;
+    vlTOPp->Bitty__DOT__d_out[1U] = vlTOPp->Bitty__DOT____Vcellout__regC__out;
     vlTOPp->Bitty__DOT__reg_en[1U] = vlTOPp->Bitty__DOT____Vcellout__ControlUnit1__en_c;
     vlTOPp->Bitty__DOT__reg_en[0xaU] = vlTOPp->Bitty__DOT____Vcellout__ControlUnit1__en_inst;
     vlTOPp->Bitty__DOT__reg_en[0U] = vlTOPp->Bitty__DOT____Vcellout__ControlUnit1__en_s;
+    vlTOPp->dout[0xaU] = vlTOPp->Bitty__DOT__d_out[0xaU];
+    vlTOPp->dout[9U] = vlTOPp->Bitty__DOT__d_out[9U];
+    vlTOPp->dout[8U] = vlTOPp->Bitty__DOT__d_out[8U];
+    vlTOPp->dout[7U] = vlTOPp->Bitty__DOT__d_out[7U];
+    vlTOPp->dout[6U] = vlTOPp->Bitty__DOT__d_out[6U];
+    vlTOPp->dout[5U] = vlTOPp->Bitty__DOT__d_out[5U];
+    vlTOPp->dout[4U] = vlTOPp->Bitty__DOT__d_out[4U];
+    vlTOPp->dout[3U] = vlTOPp->Bitty__DOT__d_out[3U];
+    vlTOPp->dout[2U] = vlTOPp->Bitty__DOT__d_out[2U];
+    vlTOPp->dout[1U] = vlTOPp->Bitty__DOT__d_out[1U];
+    vlTOPp->dout[0U] = vlTOPp->Bitty__DOT__d_out[0U];
 }
 
 VL_INLINE_OPT void VBitty::_combo__TOP__3(VBitty__Syms* __restrict vlSymsp) {
@@ -197,6 +203,22 @@ VL_INLINE_OPT void VBitty::_combo__TOP__3(VBitty__Syms* __restrict vlSymsp) {
     if ((2U & (IData)(vlTOPp->Bitty__DOT__ControlUnit1__DOT__state))) {
         if ((1U & (~ (IData)(vlTOPp->Bitty__DOT__ControlUnit1__DOT__state)))) {
             if ((0x8000U & (IData)(vlTOPp->din))) {
+                if ((1U & (~ ((IData)(vlTOPp->din) 
+                              >> 0xeU)))) {
+                    if ((0x2000U & (IData)(vlTOPp->din))) {
+                        vlTOPp->Bitty__DOT____Vcellout__ControlUnit1__en_5 = 1U;
+                    }
+                }
+            }
+        }
+    } else {
+        if ((1U & (~ (IData)(vlTOPp->Bitty__DOT__ControlUnit1__DOT__state)))) {
+            vlTOPp->Bitty__DOT____Vcellout__ControlUnit1__en_5 = 0U;
+        }
+    }
+    if ((2U & (IData)(vlTOPp->Bitty__DOT__ControlUnit1__DOT__state))) {
+        if ((1U & (~ (IData)(vlTOPp->Bitty__DOT__ControlUnit1__DOT__state)))) {
+            if ((0x8000U & (IData)(vlTOPp->din))) {
                 if ((0x4000U & (IData)(vlTOPp->din))) {
                     if ((1U & (~ ((IData)(vlTOPp->din) 
                                   >> 0xdU)))) {
@@ -212,18 +234,19 @@ VL_INLINE_OPT void VBitty::_combo__TOP__3(VBitty__Syms* __restrict vlSymsp) {
     }
     if ((2U & (IData)(vlTOPp->Bitty__DOT__ControlUnit1__DOT__state))) {
         if ((1U & (~ (IData)(vlTOPp->Bitty__DOT__ControlUnit1__DOT__state)))) {
-            if ((0x8000U & (IData)(vlTOPp->din))) {
+            if ((1U & (~ ((IData)(vlTOPp->din) >> 0xfU)))) {
                 if ((1U & (~ ((IData)(vlTOPp->din) 
                               >> 0xeU)))) {
-                    if ((0x2000U & (IData)(vlTOPp->din))) {
-                        vlTOPp->Bitty__DOT____Vcellout__ControlUnit1__en_5 = 1U;
+                    if ((1U & (~ ((IData)(vlTOPp->din) 
+                                  >> 0xdU)))) {
+                        vlTOPp->Bitty__DOT____Vcellout__ControlUnit1__en_0 = 1U;
                     }
                 }
             }
         }
     } else {
         if ((1U & (~ (IData)(vlTOPp->Bitty__DOT__ControlUnit1__DOT__state)))) {
-            vlTOPp->Bitty__DOT____Vcellout__ControlUnit1__en_5 = 0U;
+            vlTOPp->Bitty__DOT____Vcellout__ControlUnit1__en_0 = 0U;
         }
     }
     if ((2U & (IData)(vlTOPp->Bitty__DOT__ControlUnit1__DOT__state))) {
@@ -261,21 +284,6 @@ VL_INLINE_OPT void VBitty::_combo__TOP__3(VBitty__Syms* __restrict vlSymsp) {
         if ((1U & (~ (IData)(vlTOPp->Bitty__DOT__ControlUnit1__DOT__state)))) {
             if ((1U & (~ ((IData)(vlTOPp->din) >> 0xfU)))) {
                 if ((0x4000U & (IData)(vlTOPp->din))) {
-                    if ((0x2000U & (IData)(vlTOPp->din))) {
-                        vlTOPp->Bitty__DOT____Vcellout__ControlUnit1__en_3 = 1U;
-                    }
-                }
-            }
-        }
-    } else {
-        if ((1U & (~ (IData)(vlTOPp->Bitty__DOT__ControlUnit1__DOT__state)))) {
-            vlTOPp->Bitty__DOT____Vcellout__ControlUnit1__en_3 = 0U;
-        }
-    }
-    if ((2U & (IData)(vlTOPp->Bitty__DOT__ControlUnit1__DOT__state))) {
-        if ((1U & (~ (IData)(vlTOPp->Bitty__DOT__ControlUnit1__DOT__state)))) {
-            if ((1U & (~ ((IData)(vlTOPp->din) >> 0xfU)))) {
-                if ((0x4000U & (IData)(vlTOPp->din))) {
                     if ((1U & (~ ((IData)(vlTOPp->din) 
                                   >> 0xdU)))) {
                         vlTOPp->Bitty__DOT____Vcellout__ControlUnit1__en_2 = 1U;
@@ -291,18 +299,16 @@ VL_INLINE_OPT void VBitty::_combo__TOP__3(VBitty__Syms* __restrict vlSymsp) {
     if ((2U & (IData)(vlTOPp->Bitty__DOT__ControlUnit1__DOT__state))) {
         if ((1U & (~ (IData)(vlTOPp->Bitty__DOT__ControlUnit1__DOT__state)))) {
             if ((1U & (~ ((IData)(vlTOPp->din) >> 0xfU)))) {
-                if ((1U & (~ ((IData)(vlTOPp->din) 
-                              >> 0xeU)))) {
-                    if ((1U & (~ ((IData)(vlTOPp->din) 
-                                  >> 0xdU)))) {
-                        vlTOPp->Bitty__DOT____Vcellout__ControlUnit1__en_0 = 1U;
+                if ((0x4000U & (IData)(vlTOPp->din))) {
+                    if ((0x2000U & (IData)(vlTOPp->din))) {
+                        vlTOPp->Bitty__DOT____Vcellout__ControlUnit1__en_3 = 1U;
                     }
                 }
             }
         }
     } else {
         if ((1U & (~ (IData)(vlTOPp->Bitty__DOT__ControlUnit1__DOT__state)))) {
-            vlTOPp->Bitty__DOT____Vcellout__ControlUnit1__en_0 = 0U;
+            vlTOPp->Bitty__DOT____Vcellout__ControlUnit1__en_3 = 0U;
         }
     }
     if ((1U & (~ ((IData)(vlTOPp->Bitty__DOT__ControlUnit1__DOT__state) 
@@ -321,13 +327,13 @@ VL_INLINE_OPT void VBitty::_combo__TOP__3(VBitty__Syms* __restrict vlSymsp) {
                                                  >> 0xdU)));
     }
     vlTOPp->Bitty__DOT__reg_en[6U] = vlTOPp->Bitty__DOT____Vcellout__ControlUnit1__en_4;
-    vlTOPp->Bitty__DOT__reg_en[8U] = vlTOPp->Bitty__DOT____Vcellout__ControlUnit1__en_6;
     vlTOPp->Bitty__DOT__reg_en[7U] = vlTOPp->Bitty__DOT____Vcellout__ControlUnit1__en_5;
+    vlTOPp->Bitty__DOT__reg_en[8U] = vlTOPp->Bitty__DOT____Vcellout__ControlUnit1__en_6;
+    vlTOPp->Bitty__DOT__reg_en[2U] = vlTOPp->Bitty__DOT____Vcellout__ControlUnit1__en_0;
     vlTOPp->Bitty__DOT__reg_en[9U] = vlTOPp->Bitty__DOT____Vcellout__ControlUnit1__en_7;
     vlTOPp->Bitty__DOT__reg_en[3U] = vlTOPp->Bitty__DOT____Vcellout__ControlUnit1__en_1;
-    vlTOPp->Bitty__DOT__reg_en[5U] = vlTOPp->Bitty__DOT____Vcellout__ControlUnit1__en_3;
     vlTOPp->Bitty__DOT__reg_en[4U] = vlTOPp->Bitty__DOT____Vcellout__ControlUnit1__en_2;
-    vlTOPp->Bitty__DOT__reg_en[2U] = vlTOPp->Bitty__DOT____Vcellout__ControlUnit1__en_0;
+    vlTOPp->Bitty__DOT__reg_en[5U] = vlTOPp->Bitty__DOT____Vcellout__ControlUnit1__en_3;
     vlTOPp->Bitty__DOT__mux_out = ((4U & (IData)(vlTOPp->Bitty__DOT__mux_sel))
                                     ? ((2U & (IData)(vlTOPp->Bitty__DOT__mux_sel))
                                         ? ((1U & (IData)(vlTOPp->Bitty__DOT__mux_sel))
