@@ -15,42 +15,46 @@ class Bitty{
     public:
         int Rx, Ry, alu_sel, mode;
         uint16_t registers[12];
+
+        void fill(int reg, uint16_t data){
+            registers[reg] = data;
+        }
         uint16_t evaluate(){
             int output = 0;
             if(mode == 1){ // Logic
                 switch (alu_sel)
                 {
-                case 0: output = ~Rx;
+                case 0: output = ~registers[Rx];
                     break;
-                case 1: output = ~(Rx + Ry);
+                case 1: output = ~(registers[Rx] + registers[Ry]);
                     break;
-                case 2: output = (~Rx & (Ry));
+                case 2: output = (~registers[Rx] & (registers[Ry]));
                     break;
                 case 3: output = 0;
                     break;
-                case 4: output = ~(Rx & Ry);
+                case 4: output = ~(registers[Rx] & registers[Ry]);
                     break;
-                case 5: output = ~Ry;
+                case 5: output = ~registers[Ry];
                     break;
-                case 6: output = Rx ^ Ry;
+                case 6: output = registers[Rx] ^ registers[Ry];
                     break;
-                case 7: output = Rx & (~Ry);
+                case 7: output = registers[Rx] & (~registers[Ry]);
                     break;
-                case 8: output = (~Rx) | (Ry);
+                case 8: output = (~registers[Rx]) | (registers[Ry]);
                     break;
-                case 9: output = ~(Rx ^ Ry);
+                case 9: output = ~(registers[Rx] ^ registers[Ry]);
                     break;
-                case 10: output = (Ry);
+                case 10: output = (registers[Ry]);
                     break;
-                case 11: output = Rx & Ry;
+                case 11: output = registers[Rx] & registers[Ry];
                     break;
                 case 12: output = 1;
                     break;
-                case 13: output = Rx | (~Ry);
+                case 13: output = registers[Rx] | (~registers[Ry]);
                     break;
-                case 14: output = Rx | Ry;
+                case 14: output = registers[Rx] | registers[Ry];
                     break;
-                case 15: output = Rx;
+                case 15: output = registers[Rx];
                     break;
                 default: output = 4;
                     break;
@@ -59,37 +63,37 @@ class Bitty{
                 
                 switch (alu_sel)
                 {
-                case 0: output = Rx;
+                case 0: output = registers[Rx];
                     break;
-                case 1: output = Rx | Ry;
+                case 1: output = registers[Rx] | registers[Ry];
                     break;
-                case 2: output = Rx | (~Ry);
+                case 2: output = registers[Rx] | (~registers[Ry]);
                     break;
                 case 3: output = -1;
                     break;
-                case 4: output = Rx | (Rx&(~Ry));
+                case 4: output = registers[Rx] | (registers[Rx]&(~registers[Ry]));
                     break;
-                case 5: output = (Rx | Ry) + Rx&(~Ry);
+                case 5: output = (registers[Rx] | registers[Ry]) + registers[Rx]&(~registers[Ry]);
                     break;
-                case 6: output = Rx - Ry - 1;
+                case 6: output = registers[Rx] - registers[Ry] - 1;
                     break;
-                case 7: output = Rx&(~Ry) - 1;
+                case 7: output = registers[Rx]&(~registers[Ry]) - 1;
                     break;
-                case 8: output = Rx + Rx&Ry;
+                case 8: output = registers[Rx] + registers[Rx]&registers[Ry];
                     break;
-                case 9: output = Rx + Ry;
+                case 9: output = registers[Rx] + registers[Ry];
                     break;
-                case 10: output = (Rx | (~Ry)) + (Rx&Ry);
+                case 10: output = (registers[Rx] | (~registers[Ry])) + (registers[Rx]&registers[Ry]);
                     break;
-                case 11: output = (Rx & Ry) - 1;
+                case 11: output = (registers[Rx] & registers[Ry]) - 1;
                     break;
-                case 12: output = (Rx + Rx);
+                case 12: output = (registers[Rx] + registers[Rx]);
                     break;
-                case 13: output = (Rx | Ry) + Rx;
+                case 13: output = (registers[Rx] | registers[Ry]) + registers[Rx];
                     break;
-                case 14: output = (Rx + (~Ry)) + Rx;
+                case 14: output = (registers[Rx] + (~registers[Ry])) + registers[Rx];
                     break;
-                case 15: output = Rx - 1;
+                case 15: output = registers[Rx] - 1;
                     break;
                 
                 default:
@@ -133,9 +137,25 @@ int main (int argc, char **argv, char **env) {
     top->trace(tfp, 99);
     tfp->open("waveform.vcd");
 
-  
+    srand(time(nullptr));
+    
     Bitty bitty;
-    for(int cycle = 0; cycle < 10; cycle++){
+    
+    top->clk = 0;
+    top->clk = 1;
+    for(int i = 2; i <= 9; i++){
+        top->regen[i] = 1;
+    }
+        
+
+    for(int i = 2; i <= 9; i++){
+        int data = (rand() % 10000)  + 1;
+        top->regs[i] = data;
+        bitty.fill(i, data);
+    }
+    
+        
+    for(int cycle = 0; cycle < 100; cycle++){
         
         top->clk ^= 1;
         if(cycle % 4 == 0){

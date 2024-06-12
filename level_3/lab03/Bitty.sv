@@ -2,15 +2,24 @@ module Bitty(
     input logic clk,
     input logic reset,
     input logic [15:0] din,
+    input logic [15:0] regs[10:0], // data input of registers
     output logic done,
-    output logic [15:0] dout[10:0]
+    output logic [15:0] dout[10:0],
+    input write,
+    input run,
+    input logic regen[10:0] // to control enable signal of registers
 );
-    assign dout = d_out;
-    logic [15:0] d_out[10:0];
     
+    logic [15:0] d_out[10:0];
+    assign dout = d_out;
     logic [15:0] d_in[10:0];
+    assign d_in = regs;
     logic reg_en [10:0];
+    assign reg_en = regen;
     assign d_in[1] = alu_out;
+
+    
+   
     //wire [15:0] mux_out_in; // forgot why do I need it
     register regC (
         .clk(clk),
@@ -117,7 +126,7 @@ module Bitty(
         .compare(compare),
         .alu_out(alu_out)
     );
-    logic run;
+    
     ControlUnit ControlUnit1(
         .clk(clk),
         .reset(reset),

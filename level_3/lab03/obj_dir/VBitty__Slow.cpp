@@ -32,6 +32,29 @@ void VBitty::_settle__TOP__2(VBitty__Syms* __restrict vlSymsp) {
     VL_DEBUG_IF(VL_DBG_MSGF("+    VBitty::_settle__TOP__2\n"); );
     VBitty* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
     // Body
+    vlTOPp->Bitty__DOT__d_in[0xaU] = vlTOPp->regs[0xaU];
+    vlTOPp->Bitty__DOT__d_in[9U] = vlTOPp->regs[9U];
+    vlTOPp->Bitty__DOT__d_in[8U] = vlTOPp->regs[8U];
+    vlTOPp->Bitty__DOT__d_in[7U] = vlTOPp->regs[7U];
+    vlTOPp->Bitty__DOT__d_in[6U] = vlTOPp->regs[6U];
+    vlTOPp->Bitty__DOT__d_in[5U] = vlTOPp->regs[5U];
+    vlTOPp->Bitty__DOT__d_in[4U] = vlTOPp->regs[4U];
+    vlTOPp->Bitty__DOT__d_in[3U] = vlTOPp->regs[3U];
+    vlTOPp->Bitty__DOT__d_in[2U] = vlTOPp->regs[2U];
+    vlTOPp->Bitty__DOT__d_in[1U] = vlTOPp->regs[1U];
+    vlTOPp->Bitty__DOT__d_in[0U] = vlTOPp->regs[0U];
+    vlTOPp->Bitty__DOT__reg_en[0xaU] = vlTOPp->regen
+        [0xaU];
+    vlTOPp->Bitty__DOT__reg_en[9U] = vlTOPp->regen[9U];
+    vlTOPp->Bitty__DOT__reg_en[8U] = vlTOPp->regen[8U];
+    vlTOPp->Bitty__DOT__reg_en[7U] = vlTOPp->regen[7U];
+    vlTOPp->Bitty__DOT__reg_en[6U] = vlTOPp->regen[6U];
+    vlTOPp->Bitty__DOT__reg_en[5U] = vlTOPp->regen[5U];
+    vlTOPp->Bitty__DOT__reg_en[4U] = vlTOPp->regen[4U];
+    vlTOPp->Bitty__DOT__reg_en[3U] = vlTOPp->regen[3U];
+    vlTOPp->Bitty__DOT__reg_en[2U] = vlTOPp->regen[2U];
+    vlTOPp->Bitty__DOT__reg_en[1U] = vlTOPp->regen[1U];
+    vlTOPp->Bitty__DOT__reg_en[0U] = vlTOPp->regen[0U];
     vlTOPp->Bitty__DOT__ControlUnit1__DOT__next_state 
         = ((2U & (IData)(vlTOPp->Bitty__DOT__ControlUnit1__DOT__state))
             ? ((1U & (IData)(vlTOPp->Bitty__DOT__ControlUnit1__DOT__state))
@@ -39,13 +62,6 @@ void VBitty::_settle__TOP__2(VBitty__Syms* __restrict vlSymsp) {
                                ? 2U : 1U));
     vlTOPp->done = (1U & ((IData)(vlTOPp->Bitty__DOT__ControlUnit1__DOT__state) 
                           >> 1U));
-    if ((1U & (~ ((IData)(vlTOPp->Bitty__DOT__ControlUnit1__DOT__state) 
-                  >> 1U)))) {
-        if ((1U & (IData)(vlTOPp->Bitty__DOT__ControlUnit1__DOT__state))) {
-            vlTOPp->Bitty__DOT__mode = (1U & ((IData)(vlTOPp->din) 
-                                              >> 2U));
-        }
-    }
     if ((1U & (~ ((IData)(vlTOPp->Bitty__DOT__ControlUnit1__DOT__state) 
                   >> 1U)))) {
         vlTOPp->Bitty__DOT____Vcellout__ControlUnit1__en_c 
@@ -189,6 +205,13 @@ void VBitty::_settle__TOP__2(VBitty__Syms* __restrict vlSymsp) {
     } else {
         if ((1U & (~ (IData)(vlTOPp->Bitty__DOT__ControlUnit1__DOT__state)))) {
             vlTOPp->Bitty__DOT____Vcellout__ControlUnit1__en_3 = 0U;
+        }
+    }
+    if ((1U & (~ ((IData)(vlTOPp->Bitty__DOT__ControlUnit1__DOT__state) 
+                  >> 1U)))) {
+        if ((1U & (IData)(vlTOPp->Bitty__DOT__ControlUnit1__DOT__state))) {
+            vlTOPp->Bitty__DOT__mode = (1U & ((IData)(vlTOPp->din) 
+                                              >> 2U));
         }
     }
     if ((1U & (~ ((IData)(vlTOPp->Bitty__DOT__ControlUnit1__DOT__state) 
@@ -573,9 +596,17 @@ void VBitty::_ctor_var_reset() {
     clk = VL_RAND_RESET_I(1);
     reset = VL_RAND_RESET_I(1);
     din = VL_RAND_RESET_I(16);
+    { int __Vi0=0; for (; __Vi0<11; ++__Vi0) {
+            regs[__Vi0] = VL_RAND_RESET_I(16);
+    }}
     done = VL_RAND_RESET_I(1);
     { int __Vi0=0; for (; __Vi0<11; ++__Vi0) {
             dout[__Vi0] = VL_RAND_RESET_I(16);
+    }}
+    write = VL_RAND_RESET_I(1);
+    run = VL_RAND_RESET_I(1);
+    { int __Vi0=0; for (; __Vi0<11; ++__Vi0) {
+            regen[__Vi0] = VL_RAND_RESET_I(1);
     }}
     { int __Vi0=0; for (; __Vi0<11; ++__Vi0) {
             Bitty__DOT__d_out[__Vi0] = VL_RAND_RESET_I(16);
@@ -604,7 +635,6 @@ void VBitty::_ctor_var_reset() {
     Bitty__DOT__mode = VL_RAND_RESET_I(1);
     Bitty__DOT__carry_out = VL_RAND_RESET_I(1);
     Bitty__DOT__alu_out = VL_RAND_RESET_I(16);
-    Bitty__DOT__run = VL_RAND_RESET_I(1);
     Bitty__DOT____Vcellout__ControlUnit1__en_inst = VL_RAND_RESET_I(1);
     Bitty__DOT____Vcellout__ControlUnit1__en_7 = VL_RAND_RESET_I(1);
     Bitty__DOT____Vcellout__ControlUnit1__en_6 = VL_RAND_RESET_I(1);

@@ -27,8 +27,12 @@ VL_MODULE(VBitty) {
     VL_IN8(clk,0,0);
     VL_IN8(reset,0,0);
     VL_OUT8(done,0,0);
+    VL_IN8(write,0,0);
+    VL_IN8(run,0,0);
     VL_IN16(din,15,0);
+    VL_IN16(regs[11],15,0);
     VL_OUT16(dout[11],15,0);
+    VL_IN8(regen[11],0,0);
     
     // LOCAL SIGNALS
     // Internals; generally not touched by application code
@@ -37,7 +41,6 @@ VL_MODULE(VBitty) {
     CData/*3:0*/ Bitty__DOT__alu_sel;
     CData/*0:0*/ Bitty__DOT__mode;
     CData/*0:0*/ Bitty__DOT__carry_out;
-    CData/*0:0*/ Bitty__DOT__run;
     CData/*0:0*/ Bitty__DOT__alu1__DOT__arithmetic_carry_out;
     CData/*1:0*/ Bitty__DOT__ControlUnit1__DOT__state;
     CData/*1:0*/ Bitty__DOT__ControlUnit1__DOT__next_state;
