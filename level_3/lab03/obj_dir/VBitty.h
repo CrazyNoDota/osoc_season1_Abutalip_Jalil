@@ -66,6 +66,7 @@ VL_MODULE(VBitty) {
     CData/*0:0*/ Bitty__DOT____Vcellout__ControlUnit1__en_c;
     CData/*0:0*/ Bitty__DOT____Vcellout__ControlUnit1__en_s;
     CData/*0:0*/ __Vclklast__TOP__clk;
+    CData/*0:0*/ __Vclklast__TOP__reset;
     SData/*15:0*/ Bitty__DOT____Vcellout__regC__out;
     SData/*15:0*/ Bitty__DOT____Vcellout__regS__out;
     SData/*15:0*/ Bitty__DOT____Vcellout__reg0__out;
@@ -77,7 +78,7 @@ VL_MODULE(VBitty) {
     SData/*15:0*/ Bitty__DOT____Vcellout__reg6__out;
     SData/*15:0*/ Bitty__DOT____Vcellout__reg7__out;
     SData/*15:0*/ Bitty__DOT____Vcellout__reg_inst__out;
-    CData/*0:0*/ __Vm_traceActivity[3];
+    CData/*0:0*/ __Vm_traceActivity[5];
     
     // INTERNAL VARIABLES
     // Internals; generally not touched by application code
@@ -116,7 +117,7 @@ VL_MODULE(VBitty) {
     static QData _change_request(VBitty__Syms* __restrict vlSymsp);
     static QData _change_request_1(VBitty__Syms* __restrict vlSymsp);
   public:
-    static void _combo__TOP__3(VBitty__Syms* __restrict vlSymsp);
+    static void _combo__TOP__4(VBitty__Syms* __restrict vlSymsp);
   private:
     void _ctor_var_reset() VL_ATTR_COLD;
   public:
@@ -129,7 +130,9 @@ VL_MODULE(VBitty) {
     static void _eval_initial(VBitty__Syms* __restrict vlSymsp) VL_ATTR_COLD;
     static void _eval_settle(VBitty__Syms* __restrict vlSymsp) VL_ATTR_COLD;
     static void _sequent__TOP__1(VBitty__Syms* __restrict vlSymsp);
-    static void _settle__TOP__2(VBitty__Syms* __restrict vlSymsp) VL_ATTR_COLD;
+    static void _sequent__TOP__2(VBitty__Syms* __restrict vlSymsp);
+    static void _sequent__TOP__5(VBitty__Syms* __restrict vlSymsp);
+    static void _settle__TOP__3(VBitty__Syms* __restrict vlSymsp) VL_ATTR_COLD;
   private:
     static void traceChgSub0(void* userp, VerilatedVcd* tracep);
     static void traceChgTop0(void* userp, VerilatedVcd* tracep);

@@ -19,7 +19,7 @@ class Bitty{
         void fill(int reg, uint16_t data){
             registers[reg] = data;
         }
-        uint16_t evaluate(){
+        uint32_t evaluate(){
             int output = 0;
             if(mode == 1){ // Logic
                 switch (alu_sel)
@@ -101,7 +101,7 @@ class Bitty{
                 }
             
             }
-
+            registers[Rx] = output;
             return output;
         }
         
@@ -147,26 +147,47 @@ int main (int argc, char **argv, char **env) {
         top->regen[i] = 1;
     }
         
-
+    int register_data[10] = {0,0,1,2,3,4,5,6,7,8,0};
     for(int i = 2; i <= 9; i++){
-        int data = (rand() % 10000)  + 1;
+        int data = register_data[i];
         top->regs[i] = data;
         bitty.fill(i, data);
     }
     
+    int state = 0; // 0 for initial
+    // when 4 evaluate for waiting an answer
+    uint32_t test_value;
+    uint16_t instruction_set[5] = {};
+    
+    for(int cycle = 0; cycle < 10; cycle++){
+
         
-    for(int cycle = 0; cycle < 100; cycle++){
         
         top->clk ^= 1;
-        if(cycle % 4 == 0){
+        if(state == 0){
             uint16_t inst = bitty.generate_inst();
             top->din = inst;
-             
-            if(bitty.evaluate() != top->dout[bitty.Rx]){
-                std::cout<<"Failed testcase real: "<<top->dout[bitty.Rx]<<" synthesis: "<<bitty.evaluate()<<" /n bitty.Rx = "<<bitty.Rx<<"\n";
+            std::cout<<"inst: "<<inst<<" \n";
+            uint32_t test_value = bitty.evaluate();
+            state++;
+        }else if(state == 3){
+             if(test_value != top->dout[bitty.Rx]){
+                //std::cout<<"Failed testcase real: "<<top->dout[bitty.Rx]<<" synthesis: "<<bitty.evaluate()<<" /n bitty.Rx = "<<bitty.Rx<<"\n";
             }
-            
+            state = 0;
+        }else{
+            state++;
         }
+        std::cout<<"state"<<state<<" \n";
+       
+        
+       
+            
+        
+        for(int i = 2; i <= 9; i++){
+            //std::cout<<i<<"th register: "<<bitty.registers[i]<<" ";
+        }
+        std::cout<<"\n\n";
         top->eval();
         tfp->dump(cycle);
 

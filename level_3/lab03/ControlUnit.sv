@@ -23,12 +23,12 @@ module ControlUnit(
     typedef enum logic [1:0] {S0, S1, S2, IDLE} state_t;
     state_t state, next_state;
     
-    always@(posedge clk) begin
+    always@(posedge clk or posedge reset) begin
         if (reset) begin
             state <= S0;
-            done = 0;
+        end else begin
+            state <= next_state;
         end
-        state <= next_state;
     end
 
     always@(*) begin
