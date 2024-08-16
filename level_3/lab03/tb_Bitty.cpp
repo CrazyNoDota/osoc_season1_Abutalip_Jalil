@@ -147,7 +147,7 @@ int main (int argc, char **argv, char **env) {
         top->regen[i] = 1;
     }
         
-    int register_data[10] = {0,0,1,2,3,4,5,6,7,8,0};
+    int register_data[10] = {0,0,100,200,300,400,500,600,700,800,0};
     for(int i = 2; i <= 9; i++){
         int data = register_data[i];
         top->regs[i] = data;
@@ -157,7 +157,7 @@ int main (int argc, char **argv, char **env) {
     int state = 0; // 0 for initial
     // when 4 evaluate for waiting an answer
     uint32_t test_value;
-    uint16_t instruction_set[5] = {};
+    uint16_t instruction_set[5] = {1116};
     
     for(int cycle = 0; cycle < 10; cycle++){
 
