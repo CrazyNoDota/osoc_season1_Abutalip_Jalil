@@ -27,101 +27,101 @@ void VBitty::traceChgSub0(void* userp, VerilatedVcd* tracep) {
             tracep->chgBit(oldp+1,(vlTOPp->Bitty__DOT____Vcellout__ControlUnit1__en_c));
             tracep->chgBit(oldp+2,(vlTOPp->Bitty__DOT____Vcellout__ControlUnit1__en_inst));
             tracep->chgCData(oldp+3,(vlTOPp->Bitty__DOT__ControlUnit1__DOT__state),2);
-            tracep->chgCData(oldp+4,(vlTOPp->Bitty__DOT__ControlUnit1__DOT__next_state),2);
         }
         if (VL_UNLIKELY(vlTOPp->__Vm_traceActivity[2U])) {
-            tracep->chgSData(oldp+5,(vlTOPp->Bitty__DOT__d_out[0]),16);
-            tracep->chgSData(oldp+6,(vlTOPp->Bitty__DOT__d_out[1]),16);
-            tracep->chgSData(oldp+7,(vlTOPp->Bitty__DOT__d_out[2]),16);
-            tracep->chgSData(oldp+8,(vlTOPp->Bitty__DOT__d_out[3]),16);
-            tracep->chgSData(oldp+9,(vlTOPp->Bitty__DOT__d_out[4]),16);
-            tracep->chgSData(oldp+10,(vlTOPp->Bitty__DOT__d_out[5]),16);
-            tracep->chgSData(oldp+11,(vlTOPp->Bitty__DOT__d_out[6]),16);
-            tracep->chgSData(oldp+12,(vlTOPp->Bitty__DOT__d_out[7]),16);
-            tracep->chgSData(oldp+13,(vlTOPp->Bitty__DOT__d_out[8]),16);
-            tracep->chgSData(oldp+14,(vlTOPp->Bitty__DOT__d_out[9]),16);
-            tracep->chgSData(oldp+15,(vlTOPp->Bitty__DOT__d_out[10]),16);
-            tracep->chgSData(oldp+16,(vlTOPp->Bitty__DOT____Vcellout__regC__out),16);
-            tracep->chgSData(oldp+17,(vlTOPp->Bitty__DOT____Vcellout__regS__out),16);
-            tracep->chgSData(oldp+18,(vlTOPp->Bitty__DOT____Vcellout__reg0__out),16);
-            tracep->chgSData(oldp+19,(vlTOPp->Bitty__DOT____Vcellout__reg1__out),16);
-            tracep->chgSData(oldp+20,(vlTOPp->Bitty__DOT____Vcellout__reg2__out),16);
-            tracep->chgSData(oldp+21,(vlTOPp->Bitty__DOT____Vcellout__reg3__out),16);
-            tracep->chgSData(oldp+22,(vlTOPp->Bitty__DOT____Vcellout__reg4__out),16);
-            tracep->chgSData(oldp+23,(vlTOPp->Bitty__DOT____Vcellout__reg5__out),16);
-            tracep->chgSData(oldp+24,(vlTOPp->Bitty__DOT____Vcellout__reg6__out),16);
-            tracep->chgSData(oldp+25,(vlTOPp->Bitty__DOT____Vcellout__reg7__out),16);
-            tracep->chgSData(oldp+26,(vlTOPp->Bitty__DOT____Vcellout__reg_inst__out),16);
-            tracep->chgSData(oldp+27,(vlTOPp->Bitty__DOT__d_out
+            tracep->chgSData(oldp+4,(vlTOPp->Bitty__DOT__d_out[0]),16);
+            tracep->chgSData(oldp+5,(vlTOPp->Bitty__DOT__d_out[1]),16);
+            tracep->chgSData(oldp+6,(vlTOPp->Bitty__DOT__d_out[2]),16);
+            tracep->chgSData(oldp+7,(vlTOPp->Bitty__DOT__d_out[3]),16);
+            tracep->chgSData(oldp+8,(vlTOPp->Bitty__DOT__d_out[4]),16);
+            tracep->chgSData(oldp+9,(vlTOPp->Bitty__DOT__d_out[5]),16);
+            tracep->chgSData(oldp+10,(vlTOPp->Bitty__DOT__d_out[6]),16);
+            tracep->chgSData(oldp+11,(vlTOPp->Bitty__DOT__d_out[7]),16);
+            tracep->chgSData(oldp+12,(vlTOPp->Bitty__DOT__d_out[8]),16);
+            tracep->chgSData(oldp+13,(vlTOPp->Bitty__DOT__d_out[9]),16);
+            tracep->chgSData(oldp+14,(vlTOPp->Bitty__DOT__d_out[10]),16);
+            tracep->chgSData(oldp+15,(vlTOPp->Bitty__DOT____Vcellout__regC__out),16);
+            tracep->chgSData(oldp+16,(vlTOPp->Bitty__DOT____Vcellout__regS__out),16);
+            tracep->chgSData(oldp+17,(vlTOPp->Bitty__DOT____Vcellout__reg0__out),16);
+            tracep->chgSData(oldp+18,(vlTOPp->Bitty__DOT____Vcellout__reg1__out),16);
+            tracep->chgSData(oldp+19,(vlTOPp->Bitty__DOT____Vcellout__reg2__out),16);
+            tracep->chgSData(oldp+20,(vlTOPp->Bitty__DOT____Vcellout__reg3__out),16);
+            tracep->chgSData(oldp+21,(vlTOPp->Bitty__DOT____Vcellout__reg4__out),16);
+            tracep->chgSData(oldp+22,(vlTOPp->Bitty__DOT____Vcellout__reg5__out),16);
+            tracep->chgSData(oldp+23,(vlTOPp->Bitty__DOT____Vcellout__reg6__out),16);
+            tracep->chgSData(oldp+24,(vlTOPp->Bitty__DOT____Vcellout__reg7__out),16);
+            tracep->chgSData(oldp+25,(vlTOPp->Bitty__DOT____Vcellout__reg_inst__out),16);
+            tracep->chgSData(oldp+26,(vlTOPp->Bitty__DOT__d_out
                                       [2U]),16);
-            tracep->chgSData(oldp+28,(vlTOPp->Bitty__DOT__d_out
+            tracep->chgSData(oldp+27,(vlTOPp->Bitty__DOT__d_out
                                       [3U]),16);
-            tracep->chgSData(oldp+29,(vlTOPp->Bitty__DOT__d_out
+            tracep->chgSData(oldp+28,(vlTOPp->Bitty__DOT__d_out
                                       [4U]),16);
-            tracep->chgSData(oldp+30,(vlTOPp->Bitty__DOT__d_out
+            tracep->chgSData(oldp+29,(vlTOPp->Bitty__DOT__d_out
                                       [5U]),16);
-            tracep->chgSData(oldp+31,(vlTOPp->Bitty__DOT__d_out
+            tracep->chgSData(oldp+30,(vlTOPp->Bitty__DOT__d_out
                                       [6U]),16);
-            tracep->chgSData(oldp+32,(vlTOPp->Bitty__DOT__d_out
+            tracep->chgSData(oldp+31,(vlTOPp->Bitty__DOT__d_out
                                       [7U]),16);
-            tracep->chgSData(oldp+33,(vlTOPp->Bitty__DOT__d_out
+            tracep->chgSData(oldp+32,(vlTOPp->Bitty__DOT__d_out
                                       [8U]),16);
-            tracep->chgSData(oldp+34,(vlTOPp->Bitty__DOT__d_out
+            tracep->chgSData(oldp+33,(vlTOPp->Bitty__DOT__d_out
                                       [9U]),16);
-            tracep->chgSData(oldp+35,(vlTOPp->Bitty__DOT__d_out
+            tracep->chgSData(oldp+34,(vlTOPp->Bitty__DOT__d_out
                                       [0U]),16);
         }
         if (VL_UNLIKELY(vlTOPp->__Vm_traceActivity[3U])) {
-            tracep->chgSData(oldp+36,(vlTOPp->Bitty__DOT__d_in[0]),16);
-            tracep->chgSData(oldp+37,(vlTOPp->Bitty__DOT__d_in[1]),16);
-            tracep->chgSData(oldp+38,(vlTOPp->Bitty__DOT__d_in[2]),16);
-            tracep->chgSData(oldp+39,(vlTOPp->Bitty__DOT__d_in[3]),16);
-            tracep->chgSData(oldp+40,(vlTOPp->Bitty__DOT__d_in[4]),16);
-            tracep->chgSData(oldp+41,(vlTOPp->Bitty__DOT__d_in[5]),16);
-            tracep->chgSData(oldp+42,(vlTOPp->Bitty__DOT__d_in[6]),16);
-            tracep->chgSData(oldp+43,(vlTOPp->Bitty__DOT__d_in[7]),16);
-            tracep->chgSData(oldp+44,(vlTOPp->Bitty__DOT__d_in[8]),16);
-            tracep->chgSData(oldp+45,(vlTOPp->Bitty__DOT__d_in[9]),16);
-            tracep->chgSData(oldp+46,(vlTOPp->Bitty__DOT__d_in[10]),16);
-            tracep->chgCData(oldp+47,(vlTOPp->Bitty__DOT__mux_sel),3);
-            tracep->chgSData(oldp+48,(vlTOPp->Bitty__DOT__mux_out),16);
-            tracep->chgCData(oldp+49,(vlTOPp->Bitty__DOT__alu_sel),4);
-            tracep->chgBit(oldp+50,(vlTOPp->Bitty__DOT__mode));
-            tracep->chgBit(oldp+51,(vlTOPp->Bitty__DOT__carry_out));
-            tracep->chgSData(oldp+52,(vlTOPp->Bitty__DOT__alu_out),16);
-            tracep->chgSData(oldp+53,(vlTOPp->Bitty__DOT__d_in
+            tracep->chgSData(oldp+35,(vlTOPp->Bitty__DOT__d_in[0]),16);
+            tracep->chgSData(oldp+36,(vlTOPp->Bitty__DOT__d_in[1]),16);
+            tracep->chgSData(oldp+37,(vlTOPp->Bitty__DOT__d_in[2]),16);
+            tracep->chgSData(oldp+38,(vlTOPp->Bitty__DOT__d_in[3]),16);
+            tracep->chgSData(oldp+39,(vlTOPp->Bitty__DOT__d_in[4]),16);
+            tracep->chgSData(oldp+40,(vlTOPp->Bitty__DOT__d_in[5]),16);
+            tracep->chgSData(oldp+41,(vlTOPp->Bitty__DOT__d_in[6]),16);
+            tracep->chgSData(oldp+42,(vlTOPp->Bitty__DOT__d_in[7]),16);
+            tracep->chgSData(oldp+43,(vlTOPp->Bitty__DOT__d_in[8]),16);
+            tracep->chgSData(oldp+44,(vlTOPp->Bitty__DOT__d_in[9]),16);
+            tracep->chgSData(oldp+45,(vlTOPp->Bitty__DOT__d_in[10]),16);
+            tracep->chgCData(oldp+46,(vlTOPp->Bitty__DOT__mux_sel),3);
+            tracep->chgSData(oldp+47,(vlTOPp->Bitty__DOT__mux_out),16);
+            tracep->chgCData(oldp+48,(vlTOPp->Bitty__DOT__alu_sel),4);
+            tracep->chgBit(oldp+49,(vlTOPp->Bitty__DOT__mode));
+            tracep->chgBit(oldp+50,(vlTOPp->Bitty__DOT__carry_out));
+            tracep->chgSData(oldp+51,(vlTOPp->Bitty__DOT__alu_out),16);
+            tracep->chgSData(oldp+52,(vlTOPp->Bitty__DOT__d_in
                                       [1U]),16);
-            tracep->chgSData(oldp+54,(vlTOPp->Bitty__DOT__d_in
+            tracep->chgSData(oldp+53,(vlTOPp->Bitty__DOT__d_in
                                       [0U]),16);
-            tracep->chgSData(oldp+55,(vlTOPp->Bitty__DOT__d_in
+            tracep->chgSData(oldp+54,(vlTOPp->Bitty__DOT__d_in
                                       [2U]),16);
-            tracep->chgSData(oldp+56,(vlTOPp->Bitty__DOT__d_in
+            tracep->chgSData(oldp+55,(vlTOPp->Bitty__DOT__d_in
                                       [3U]),16);
-            tracep->chgSData(oldp+57,(vlTOPp->Bitty__DOT__d_in
+            tracep->chgSData(oldp+56,(vlTOPp->Bitty__DOT__d_in
                                       [4U]),16);
-            tracep->chgSData(oldp+58,(vlTOPp->Bitty__DOT__d_in
+            tracep->chgSData(oldp+57,(vlTOPp->Bitty__DOT__d_in
                                       [5U]),16);
-            tracep->chgSData(oldp+59,(vlTOPp->Bitty__DOT__d_in
+            tracep->chgSData(oldp+58,(vlTOPp->Bitty__DOT__d_in
                                       [6U]),16);
-            tracep->chgSData(oldp+60,(vlTOPp->Bitty__DOT__d_in
+            tracep->chgSData(oldp+59,(vlTOPp->Bitty__DOT__d_in
                                       [7U]),16);
-            tracep->chgSData(oldp+61,(vlTOPp->Bitty__DOT__d_in
+            tracep->chgSData(oldp+60,(vlTOPp->Bitty__DOT__d_in
                                       [8U]),16);
-            tracep->chgSData(oldp+62,(vlTOPp->Bitty__DOT__d_in
+            tracep->chgSData(oldp+61,(vlTOPp->Bitty__DOT__d_in
                                       [9U]),16);
-            tracep->chgSData(oldp+63,(vlTOPp->Bitty__DOT__d_in
+            tracep->chgSData(oldp+62,(vlTOPp->Bitty__DOT__d_in
                                       [0xaU]),16);
-            tracep->chgSData(oldp+64,(vlTOPp->Bitty__DOT__alu1__DOT__temp_a_out),16);
-            tracep->chgSData(oldp+65,(vlTOPp->Bitty__DOT__alu1__DOT__temp_l_out),16);
-            tracep->chgBit(oldp+66,(vlTOPp->Bitty__DOT__alu1__DOT__arithmetic_carry_out));
-            tracep->chgBit(oldp+67,(vlTOPp->Bitty__DOT____Vcellout__ControlUnit1__en_0));
-            tracep->chgBit(oldp+68,(vlTOPp->Bitty__DOT____Vcellout__ControlUnit1__en_1));
-            tracep->chgBit(oldp+69,(vlTOPp->Bitty__DOT____Vcellout__ControlUnit1__en_2));
-            tracep->chgBit(oldp+70,(vlTOPp->Bitty__DOT____Vcellout__ControlUnit1__en_3));
-            tracep->chgBit(oldp+71,(vlTOPp->Bitty__DOT____Vcellout__ControlUnit1__en_4));
-            tracep->chgBit(oldp+72,(vlTOPp->Bitty__DOT____Vcellout__ControlUnit1__en_5));
-            tracep->chgBit(oldp+73,(vlTOPp->Bitty__DOT____Vcellout__ControlUnit1__en_6));
-            tracep->chgBit(oldp+74,(vlTOPp->Bitty__DOT____Vcellout__ControlUnit1__en_7));
+            tracep->chgSData(oldp+63,(vlTOPp->Bitty__DOT__alu1__DOT__temp_a_out),16);
+            tracep->chgSData(oldp+64,(vlTOPp->Bitty__DOT__alu1__DOT__temp_l_out),16);
+            tracep->chgBit(oldp+65,(vlTOPp->Bitty__DOT__alu1__DOT__arithmetic_carry_out));
+            tracep->chgBit(oldp+66,(vlTOPp->Bitty__DOT____Vcellout__ControlUnit1__en_0));
+            tracep->chgBit(oldp+67,(vlTOPp->Bitty__DOT____Vcellout__ControlUnit1__en_1));
+            tracep->chgBit(oldp+68,(vlTOPp->Bitty__DOT____Vcellout__ControlUnit1__en_2));
+            tracep->chgBit(oldp+69,(vlTOPp->Bitty__DOT____Vcellout__ControlUnit1__en_3));
+            tracep->chgBit(oldp+70,(vlTOPp->Bitty__DOT____Vcellout__ControlUnit1__en_4));
+            tracep->chgBit(oldp+71,(vlTOPp->Bitty__DOT____Vcellout__ControlUnit1__en_5));
+            tracep->chgBit(oldp+72,(vlTOPp->Bitty__DOT____Vcellout__ControlUnit1__en_6));
+            tracep->chgBit(oldp+73,(vlTOPp->Bitty__DOT____Vcellout__ControlUnit1__en_7));
+            tracep->chgCData(oldp+74,(vlTOPp->Bitty__DOT__ControlUnit1__DOT__next_state),2);
         }
         if (VL_UNLIKELY((vlTOPp->__Vm_traceActivity
                          [3U] | vlTOPp->__Vm_traceActivity

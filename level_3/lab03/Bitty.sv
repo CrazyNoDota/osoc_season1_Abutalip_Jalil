@@ -16,6 +16,7 @@ module Bitty(
     assign d_in = regs;
     logic reg_en [10:0];
     assign reg_en = regen;
+    
     assign d_in[1] = alu_out;
 
     

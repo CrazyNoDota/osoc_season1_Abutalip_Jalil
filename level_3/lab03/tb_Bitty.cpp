@@ -20,7 +20,7 @@ class Bitty{
             registers[reg] = data;
         }
         uint32_t evaluate(){
-            int output = 0;
+            uint16_t output = 0;
             if(mode == 1){ // Logic
                 switch (alu_sel)
                 {
@@ -112,7 +112,6 @@ class Bitty{
         int32_t generate_inst() {
             uint16_t inst = 0;
 
-            srand(time(nullptr));
             Rx = rand() % 8;
             Ry = rand() % 8;
             alu_sel = rand() % 16;
@@ -142,55 +141,76 @@ int main (int argc, char **argv, char **env) {
     Bitty bitty;
     
     top->clk = 0;
+    top->reset = 1;
+    top->eval();
+    tfp->dump(0);
+    
     top->clk = 1;
+    top->reset = 1;
+    top->eval();
+    tfp->dump(1);
+    int cycle = 2;
+
+    top->clk = 0;
+    top->reset = 0;
+    top->eval();
+    tfp->dump(cycle++);
+
+    int register_data[10] = {0,0,1,2,3,4,5,6,7,8};
     for(int i = 2; i <= 9; i++){
+        top->regs[i] = register_data[i];
+        bitty.fill(i, register_data[i]);
         top->regen[i] = 1;
     }
-        
-    int register_data[10] = {0,0,1,2,3,4,5,6,7,8,0};
+
+    for(int init_cycle = 0; init_cycle < 2; init_cycle++){
+        top->clk ^= 1;
+        top->eval();
+        tfp->dump(cycle++);
+    }
+
     for(int i = 2; i <= 9; i++){
-        int data = register_data[i];
-        top->regs[i] = data;
-        bitty.fill(i, data);
+        top->regen[i] = 0;
     }
     
     int state = 0; // 0 for initial
     // when 4 evaluate for waiting an answer
-    uint32_t test_value;
-    uint16_t instruction_set[5] = {};
-    
-    for(int cycle = 0; cycle < 10; cycle++){
+    uint32_t test_value = 0;
 
-        
-        
+    for(; cycle < MAX_SIM_CYCLES; cycle++){
         top->clk ^= 1;
-        if(state == 0){
-            uint16_t inst = bitty.generate_inst();
-            top->din = inst;
-            std::cout<<"inst: "<<inst<<" \n";
-            uint32_t test_value = bitty.evaluate();
-            state++;
-        }else if(state == 3){
-             if(test_value != top->dout[bitty.Rx]){
-                //std::cout<<"Failed testcase real: "<<top->dout[bitty.Rx]<<" synthesis: "<<bitty.evaluate()<<" /n bitty.Rx = "<<bitty.Rx<<"\n";
+        top->eval();
+        tfp->dump(cycle);
+        if(top->clk == 1){
+            if(state == 0){
+                uint16_t inst = bitty.generate_inst();
+                top->din = inst;
+                top->run = 1;
+                std::cout<<"inst: "<<inst<<" \n";
+                test_value = bitty.evaluate();
+                state = 1;
+        }else if(state == 1){
+            if(top->done){
+                state = 2;
+            }
+        }else if(state == 2){
+            top->run = 0;
+            uint32_t module_output = top->dout[bitty.Rx];
+            if(test_value != module_output){
+                std::cout<<"Failed testcase: Expected "<<test_value << ", got"<<module_output<<" in register"<<bitty.Rx<<"\n";
+            }else {
+                std::cout<<"Passed testcase: Output"<<module_output<<" in register "<<bitty.Rx<<"\n";
             }
             state = 0;
-        }else{
-            state++;
         }
-        std::cout<<"state"<<state<<" \n";
-       
-        
-       
             
         
         for(int i = 2; i <= 9; i++){
             //std::cout<<i<<"th register: "<<bitty.registers[i]<<" ";
         }
-        std::cout<<"\n\n";
-        top->eval();
-        tfp->dump(cycle);
 
+        }
+        
 
         
     }

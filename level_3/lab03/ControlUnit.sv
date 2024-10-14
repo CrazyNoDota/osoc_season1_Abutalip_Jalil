@@ -34,9 +34,13 @@ module ControlUnit(
     always@(*) begin
         case(state)
                 IDLE: begin
-                    done = 1;
+                    done = 0;
                     next_state = S0;
                     en_inst = 1;
+                    if (run)
+                        next_state = S0;
+                    else
+                        next_state = IDLE;
                 end
                 S0: begin 
                     mux_sel = instruction[15:13];
