@@ -13,11 +13,17 @@ module Bitty(
     logic [15:0] d_out[10:0];
     assign dout = d_out;
     logic [15:0] d_in[10:0];
-    assign d_in = regs;
     logic reg_en [10:0];
     assign reg_en = regen;
-    
+
     assign d_in[1] = alu_out;
+
+    genvar i;
+    generate
+        for(i = 2; i <= 9; i = i + 1) begin : reg_block
+            assign d_in[i] = (reg_en[i] && !write) ? d_out[1] : regs[i]; 
+        end
+    endgenerate
 
     
    

@@ -118,6 +118,7 @@ VL_MODULE(VBitty) {
     static QData _change_request_1(VBitty__Syms* __restrict vlSymsp);
   public:
     static void _combo__TOP__4(VBitty__Syms* __restrict vlSymsp);
+    static void _combo__TOP__6(VBitty__Syms* __restrict vlSymsp);
   private:
     void _ctor_var_reset() VL_ATTR_COLD;
   public:

@@ -175,6 +175,20 @@ VL_INLINE_OPT void VBitty::_combo__TOP__4(VBitty__Syms* __restrict vlSymsp) {
                 ? ((IData)(vlTOPp->run) ? 0U : 3U) : 3U)
             : ((1U & (IData)(vlTOPp->Bitty__DOT__ControlUnit1__DOT__state))
                 ? 2U : 1U));
+    if ((1U & (~ ((IData)(vlTOPp->Bitty__DOT__ControlUnit1__DOT__state) 
+                  >> 1U)))) {
+        if ((1U & (IData)(vlTOPp->Bitty__DOT__ControlUnit1__DOT__state))) {
+            vlTOPp->Bitty__DOT__mode = (1U & ((IData)(vlTOPp->din) 
+                                              >> 2U));
+        }
+    }
+    if ((1U & (~ ((IData)(vlTOPp->Bitty__DOT__ControlUnit1__DOT__state) 
+                  >> 1U)))) {
+        if ((1U & (IData)(vlTOPp->Bitty__DOT__ControlUnit1__DOT__state))) {
+            vlTOPp->Bitty__DOT__alu_sel = (0xfU & ((IData)(vlTOPp->din) 
+                                                   >> 3U));
+        }
+    }
     if ((2U & (IData)(vlTOPp->Bitty__DOT__ControlUnit1__DOT__state))) {
         if ((1U & (~ (IData)(vlTOPp->Bitty__DOT__ControlUnit1__DOT__state)))) {
             if ((0x8000U & (IData)(vlTOPp->din))) {
@@ -305,37 +319,12 @@ VL_INLINE_OPT void VBitty::_combo__TOP__4(VBitty__Syms* __restrict vlSymsp) {
     }
     if ((1U & (~ ((IData)(vlTOPp->Bitty__DOT__ControlUnit1__DOT__state) 
                   >> 1U)))) {
-        if ((1U & (IData)(vlTOPp->Bitty__DOT__ControlUnit1__DOT__state))) {
-            vlTOPp->Bitty__DOT__mode = (1U & ((IData)(vlTOPp->din) 
-                                              >> 2U));
-        }
-    }
-    if ((1U & (~ ((IData)(vlTOPp->Bitty__DOT__ControlUnit1__DOT__state) 
-                  >> 1U)))) {
-        if ((1U & (IData)(vlTOPp->Bitty__DOT__ControlUnit1__DOT__state))) {
-            vlTOPp->Bitty__DOT__alu_sel = (0xfU & ((IData)(vlTOPp->din) 
-                                                   >> 3U));
-        }
-    }
-    if ((1U & (~ ((IData)(vlTOPp->Bitty__DOT__ControlUnit1__DOT__state) 
-                  >> 1U)))) {
         vlTOPp->Bitty__DOT__mux_sel = (7U & ((1U & (IData)(vlTOPp->Bitty__DOT__ControlUnit1__DOT__state))
                                               ? ((IData)(vlTOPp->din) 
                                                  >> 0xaU)
                                               : ((IData)(vlTOPp->din) 
                                                  >> 0xdU)));
     }
-    vlTOPp->Bitty__DOT__d_in[0xaU] = vlTOPp->regs[0xaU];
-    vlTOPp->Bitty__DOT__d_in[9U] = vlTOPp->regs[9U];
-    vlTOPp->Bitty__DOT__d_in[8U] = vlTOPp->regs[8U];
-    vlTOPp->Bitty__DOT__d_in[7U] = vlTOPp->regs[7U];
-    vlTOPp->Bitty__DOT__d_in[6U] = vlTOPp->regs[6U];
-    vlTOPp->Bitty__DOT__d_in[5U] = vlTOPp->regs[5U];
-    vlTOPp->Bitty__DOT__d_in[4U] = vlTOPp->regs[4U];
-    vlTOPp->Bitty__DOT__d_in[3U] = vlTOPp->regs[3U];
-    vlTOPp->Bitty__DOT__d_in[2U] = vlTOPp->regs[2U];
-    vlTOPp->Bitty__DOT__d_in[1U] = vlTOPp->regs[1U];
-    vlTOPp->Bitty__DOT__d_in[0U] = vlTOPp->regs[0U];
     vlTOPp->Bitty__DOT__reg_en[0xaU] = vlTOPp->regen
         [0xaU];
     vlTOPp->Bitty__DOT__reg_en[9U] = vlTOPp->regen[9U];
@@ -669,6 +658,52 @@ VL_INLINE_OPT void VBitty::_sequent__TOP__5(VBitty__Syms* __restrict vlSymsp) {
     vlTOPp->Bitty__DOT__reg_en[0U] = vlTOPp->Bitty__DOT____Vcellout__ControlUnit1__en_s;
 }
 
+VL_INLINE_OPT void VBitty::_combo__TOP__6(VBitty__Syms* __restrict vlSymsp) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    VBitty::_combo__TOP__6\n"); );
+    VBitty* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
+    // Body
+    vlTOPp->Bitty__DOT__d_in[2U] = ((vlTOPp->Bitty__DOT__reg_en
+                                     [2U] & (~ (IData)(vlTOPp->write)))
+                                     ? vlTOPp->Bitty__DOT__d_out
+                                    [1U] : vlTOPp->regs
+                                    [2U]);
+    vlTOPp->Bitty__DOT__d_in[3U] = ((vlTOPp->Bitty__DOT__reg_en
+                                     [3U] & (~ (IData)(vlTOPp->write)))
+                                     ? vlTOPp->Bitty__DOT__d_out
+                                    [1U] : vlTOPp->regs
+                                    [3U]);
+    vlTOPp->Bitty__DOT__d_in[4U] = ((vlTOPp->Bitty__DOT__reg_en
+                                     [4U] & (~ (IData)(vlTOPp->write)))
+                                     ? vlTOPp->Bitty__DOT__d_out
+                                    [1U] : vlTOPp->regs
+                                    [4U]);
+    vlTOPp->Bitty__DOT__d_in[5U] = ((vlTOPp->Bitty__DOT__reg_en
+                                     [5U] & (~ (IData)(vlTOPp->write)))
+                                     ? vlTOPp->Bitty__DOT__d_out
+                                    [1U] : vlTOPp->regs
+                                    [5U]);
+    vlTOPp->Bitty__DOT__d_in[6U] = ((vlTOPp->Bitty__DOT__reg_en
+                                     [6U] & (~ (IData)(vlTOPp->write)))
+                                     ? vlTOPp->Bitty__DOT__d_out
+                                    [1U] : vlTOPp->regs
+                                    [6U]);
+    vlTOPp->Bitty__DOT__d_in[7U] = ((vlTOPp->Bitty__DOT__reg_en
+                                     [7U] & (~ (IData)(vlTOPp->write)))
+                                     ? vlTOPp->Bitty__DOT__d_out
+                                    [1U] : vlTOPp->regs
+                                    [7U]);
+    vlTOPp->Bitty__DOT__d_in[8U] = ((vlTOPp->Bitty__DOT__reg_en
+                                     [8U] & (~ (IData)(vlTOPp->write)))
+                                     ? vlTOPp->Bitty__DOT__d_out
+                                    [1U] : vlTOPp->regs
+                                    [8U]);
+    vlTOPp->Bitty__DOT__d_in[9U] = ((vlTOPp->Bitty__DOT__reg_en
+                                     [9U] & (~ (IData)(vlTOPp->write)))
+                                     ? vlTOPp->Bitty__DOT__d_out
+                                    [1U] : vlTOPp->regs
+                                    [9U]);
+}
+
 void VBitty::_eval(VBitty__Syms* __restrict vlSymsp) {
     VL_DEBUG_IF(VL_DBG_MSGF("+    VBitty::_eval\n"); );
     VBitty* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
@@ -689,6 +724,7 @@ void VBitty::_eval(VBitty__Syms* __restrict vlSymsp) {
         vlTOPp->_sequent__TOP__5(vlSymsp);
         vlTOPp->__Vm_traceActivity[4U] = 1U;
     }
+    vlTOPp->_combo__TOP__6(vlSymsp);
     // Final
     vlTOPp->__Vclklast__TOP__clk = vlTOPp->clk;
     vlTOPp->__Vclklast__TOP__reset = vlTOPp->reset;
