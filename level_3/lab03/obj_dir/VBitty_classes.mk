@@ -24,13 +24,16 @@ VM_TRACE_FST_WRITER_THREAD = 0
 # Generated module classes, fast-path, compile with highest optimization
 VM_CLASSES_FAST += \
 	VBitty \
+	VBitty_Bitty \
 
 # Generated module classes, non-fast-path, compile with low/medium optimization
 VM_CLASSES_SLOW += \
 	VBitty__Slow \
+	VBitty_Bitty__Slow \
 
 # Generated support classes, fast-path, compile with highest optimization
 VM_SUPPORT_FAST += \
+	VBitty__Dpi \
 	VBitty__Trace \
 
 # Generated support classes, non-fast-path, compile with low/medium optimization
@@ -41,6 +44,7 @@ VM_SUPPORT_SLOW += \
 # Global classes, need linked once per executable, fast-path, compile with highest optimization
 VM_GLOBAL_FAST += \
 	verilated \
+	verilated_dpi \
 	verilated_vcd_c \
 
 # Global classes, need linked once per executable, non-fast-path, compile with low/medium optimization

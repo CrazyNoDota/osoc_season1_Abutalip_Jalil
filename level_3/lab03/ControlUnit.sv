@@ -32,6 +32,21 @@ module ControlUnit(
     end
 
     always@(*) begin
+        alu_sel = 4'd0;
+        mux_sel = 3'd0;
+        mode = 1'b0;
+        en_s = 1'b0;
+        en_c = 1'b0;
+        en_0 = 1'b0;
+        en_1 = 1'b0;
+        en_2 = 1'b0;
+        en_3 = 1'b0;
+        en_4 = 1'b0;
+        en_5 = 1'b0;
+        en_6 = 1'b0;
+        en_7 = 1'b0;
+        en_inst = 1'b0;
+        done = 1'b0;
         case(state)
                 IDLE: begin
                     done = 0;

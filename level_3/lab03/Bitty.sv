@@ -2,34 +2,34 @@ module Bitty(
     input logic clk,
     input logic reset,
     input logic [15:0] din,
-    input logic [15:0] regs[10:0], // data input of registers
     output logic done,
     output logic [15:0] dout[10:0],
-    input write,
-    input run,
-    input logic regen[10:0] // to control enable signal of registers
+    input run
 );
     
-    logic [15:0] d_out[10:0];
+    logic [15:0] d_out[10:0] /* verilator public */;
     assign dout = d_out;
-    logic [15:0] d_in[10:0];
-    logic reg_en [10:0];
-    assign reg_en = regen;
+    
+    logic [15:0] d_in[10:0] /* verilator public */;
+    
+    logic reg_en [10:0] /* verilator public */;
 
-    assign d_in[1] = alu_out;
+    // Data input assignments
+    assign d_in[0] = mux_out; // Load from mux to regS when en_s is active
+    assign d_in[1] = alu_out; // ALU output to regC
 
+    // Assign d_in for other registers
     genvar i;
     generate
         for(i = 2; i <= 9; i = i + 1) begin : reg_block
-            assign d_in[i] = (reg_en[i] && !write) ? d_out[1] : regs[i]; 
+            assign d_in[i] = alu_out; // ALU output is written to destination registers
         end
     endgenerate
 
-    
-   
-    //wire [15:0] mux_out_in; // forgot why do I need it
+    // Instantiate registers
     register regC (
         .clk(clk),
+        .reset(reset),
         .enable(reg_en[1]),
         .in(d_in[1]),
         .out(d_out[1])
@@ -37,74 +37,44 @@ module Bitty(
 
     register regS(
         .clk(clk),
+        .reset(reset),
         .enable(reg_en[0]),
         .in(d_in[0]),
         .out(d_out[0])
     );
 
-    
-    register reg0(
-        .clk(clk),
-        .enable(reg_en[2]),
-        .in(d_in[2]),
-        .out(d_out[2])
-    );
-     register reg1(
-        .clk(clk),
-        .enable(reg_en[3]),
-        .in(d_in[3]),
-        .out(d_out[3])
-    );
-    register reg2(
-        .clk(clk),
-        .enable(reg_en[4]),
-        .in(d_in[4]),
-        .out(d_out[4])
-    );
-    register reg3(
-        .clk(clk),
-        .enable(reg_en[5]),
-        .in(d_in[5]),
-        .out(d_out[5])
-    );
-    
-    register reg4(
-        .clk(clk),
-        .enable(reg_en[6]),
-        .in(d_in[6]),
-        .out(d_out[6])
-    );
-     register reg5(
-        .clk(clk),
-        .enable(reg_en[7]),
-        .in(d_in[7]),
-        .out(d_out[7])
-    );
-    register reg6(
-        .clk(clk),
-        .enable(reg_en[8]),
-        .in(d_in[8]),
-        .out(d_out[8])
-    );
-    register reg7(
-        .clk(clk),
-        .enable(reg_en[9]),
-        .in(d_in[9]),
-        .out(d_out[9])
-    );
+    generate
+        for(i = 2; i <= 9; i = i + 1) begin : reg_inst_block
+            register regN(
+                .clk(clk),
+                .reset(reset),
+                .enable(reg_en[i]),
+                .in(d_in[i]),
+                .out(d_out[i])
+            );
+        end
+    endgenerate
 
+    // Instruction register
     register reg_inst(
         .clk(clk),
+        .reset(reset),
         .enable(reg_en[10]),
-        .in(d_in[10]),
+        .in(din),
         .out(d_out[10])
     );
 
-
-    
-
+    // Signals used
+    logic [3:0] alu_sel;
     logic [2:0] mux_sel;
+    logic mode;
+    logic carry_out;
+    logic compare;
+    logic [15:0] alu_out;
     logic [15:0] mux_out;
+    logic carry_in;
+
+    // Instantiate Mux
     mux mux1(
         .reg0(d_out[2]),
         .reg1(d_out[3]),
@@ -117,14 +87,10 @@ module Bitty(
         .sel(mux_sel),
         .out(mux_out)
     );
-    logic carry_in;
-    logic [3:0] alu_sel;
-    logic mode;
-    logic carry_out;
-    logic compare;
-    logic [15:0] alu_out;
+
+    // Instantiate ALU
     alu alu1(
-        .carry_in(carry_in),
+        .carry_in(1'b0),
         .in_a(d_out[0]),
         .in_b(mux_out),
         .sel(alu_sel),
@@ -133,11 +99,12 @@ module Bitty(
         .compare(compare),
         .alu_out(alu_out)
     );
-    
+
+    // Instantiate ControlUnit and connect reg_en signals
     ControlUnit ControlUnit1(
         .clk(clk),
         .reset(reset),
-        .instruction(din),
+        .instruction(d_out[10]),
         .run(run),
         .alu_sel(alu_sel),
         .mux_sel(mux_sel),
@@ -154,8 +121,6 @@ module Bitty(
         .en_7(reg_en[9]),
         .en_inst(reg_en[10]),
         .done(done)
-
     );
-
 
 endmodule

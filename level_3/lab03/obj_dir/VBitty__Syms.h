@@ -11,6 +11,9 @@
 
 // INCLUDE MODULE CLASSES
 #include "VBitty.h"
+#include "VBitty_Bitty.h"
+
+// DPI TYPES for DPI Export callbacks (Internal use)
 
 // SYMS CLASS
 class VBitty__Syms : public VerilatedSyms {
@@ -24,6 +27,10 @@ class VBitty__Syms : public VerilatedSyms {
     
     // SUBCELL STATE
     VBitty*                        TOPp;
+    VBitty_Bitty                   TOP__Bitty;
+    
+    // SCOPE NAMES
+    VerilatedScope __Vscope_Bitty;
     
     // CREATORS
     VBitty__Syms(VBitty* topp, const char* namep);

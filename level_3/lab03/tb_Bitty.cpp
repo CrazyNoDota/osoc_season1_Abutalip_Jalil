@@ -158,10 +158,11 @@ int main (int argc, char **argv, char **env) {
 
     int register_data[10] = {0,0,1,2,3,4,5,6,7,8};
     for(int i = 2; i <= 9; i++){
-        top->regs[i] = register_data[i];
+        top->d_out[i] = register_data[i];
         bitty.fill(i, register_data[i]);
-        top->regen[i] = 1;
+        top->reg_en[i] = 1;
     }
+
 
     for(int init_cycle = 0; init_cycle < 2; init_cycle++){
         top->clk ^= 1;
