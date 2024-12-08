@@ -4,7 +4,9 @@ module Bitty(
     input logic [15:0] din,
     output logic done,
     output logic [15:0] dout[10:0],
-    input run
+    input run,
+    input logic init_en,
+    input logic [15:0] init_data[7:0]
 );
     
     logic [15:0] d_out[10:0] /* verilator public */;
@@ -43,17 +45,19 @@ module Bitty(
         .out(d_out[0])
     );
 
-    generate
-        for(i = 2; i <= 9; i = i + 1) begin : reg_inst_block
-            register regN(
-                .clk(clk),
-                .reset(reset),
-                .enable(reg_en[i]),
-                .in(d_in[i]),
-                .out(d_out[i])
-            );
-        end
-    endgenerate
+    // Instantiate registers with initialization capability
+generate
+    for(i = 2; i <= 9; i = i + 1) begin : reg_inst_block
+        register regN(
+            .clk(clk),
+            .reset(reset),
+            .enable(reg_en[i] || init_en),
+            .in(init_en ? init_data[i-2] : d_in[i]),
+            .out(d_out[i])
+        );
+    end
+endgenerate
+
 
     // Instruction register
     register reg_inst(

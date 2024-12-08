@@ -24,70 +24,6 @@ VL_INLINE_OPT void VBitty_Bitty::_sequent__TOP__Bitty__1(VBitty__Syms* __restric
         }
     }
     if (vlTOPp->reset) {
-        vlSymsp->TOP__Bitty.__Vcellout__reg_inst_block__BRA__9__KET____DOT__regN__out = 0U;
-    } else {
-        if (vlSymsp->TOP__Bitty.reg_en[9U]) {
-            vlSymsp->TOP__Bitty.__Vcellout__reg_inst_block__BRA__9__KET____DOT__regN__out 
-                = vlSymsp->TOP__Bitty.d_in[9U];
-        }
-    }
-    if (vlTOPp->reset) {
-        vlSymsp->TOP__Bitty.__Vcellout__reg_inst_block__BRA__8__KET____DOT__regN__out = 0U;
-    } else {
-        if (vlSymsp->TOP__Bitty.reg_en[8U]) {
-            vlSymsp->TOP__Bitty.__Vcellout__reg_inst_block__BRA__8__KET____DOT__regN__out 
-                = vlSymsp->TOP__Bitty.d_in[8U];
-        }
-    }
-    if (vlTOPp->reset) {
-        vlSymsp->TOP__Bitty.__Vcellout__reg_inst_block__BRA__7__KET____DOT__regN__out = 0U;
-    } else {
-        if (vlSymsp->TOP__Bitty.reg_en[7U]) {
-            vlSymsp->TOP__Bitty.__Vcellout__reg_inst_block__BRA__7__KET____DOT__regN__out 
-                = vlSymsp->TOP__Bitty.d_in[7U];
-        }
-    }
-    if (vlTOPp->reset) {
-        vlSymsp->TOP__Bitty.__Vcellout__reg_inst_block__BRA__6__KET____DOT__regN__out = 0U;
-    } else {
-        if (vlSymsp->TOP__Bitty.reg_en[6U]) {
-            vlSymsp->TOP__Bitty.__Vcellout__reg_inst_block__BRA__6__KET____DOT__regN__out 
-                = vlSymsp->TOP__Bitty.d_in[6U];
-        }
-    }
-    if (vlTOPp->reset) {
-        vlSymsp->TOP__Bitty.__Vcellout__reg_inst_block__BRA__5__KET____DOT__regN__out = 0U;
-    } else {
-        if (vlSymsp->TOP__Bitty.reg_en[5U]) {
-            vlSymsp->TOP__Bitty.__Vcellout__reg_inst_block__BRA__5__KET____DOT__regN__out 
-                = vlSymsp->TOP__Bitty.d_in[5U];
-        }
-    }
-    if (vlTOPp->reset) {
-        vlSymsp->TOP__Bitty.__Vcellout__reg_inst_block__BRA__4__KET____DOT__regN__out = 0U;
-    } else {
-        if (vlSymsp->TOP__Bitty.reg_en[4U]) {
-            vlSymsp->TOP__Bitty.__Vcellout__reg_inst_block__BRA__4__KET____DOT__regN__out 
-                = vlSymsp->TOP__Bitty.d_in[4U];
-        }
-    }
-    if (vlTOPp->reset) {
-        vlSymsp->TOP__Bitty.__Vcellout__reg_inst_block__BRA__3__KET____DOT__regN__out = 0U;
-    } else {
-        if (vlSymsp->TOP__Bitty.reg_en[3U]) {
-            vlSymsp->TOP__Bitty.__Vcellout__reg_inst_block__BRA__3__KET____DOT__regN__out 
-                = vlSymsp->TOP__Bitty.d_in[3U];
-        }
-    }
-    if (vlTOPp->reset) {
-        vlSymsp->TOP__Bitty.__Vcellout__reg_inst_block__BRA__2__KET____DOT__regN__out = 0U;
-    } else {
-        if (vlSymsp->TOP__Bitty.reg_en[2U]) {
-            vlSymsp->TOP__Bitty.__Vcellout__reg_inst_block__BRA__2__KET____DOT__regN__out 
-                = vlSymsp->TOP__Bitty.d_in[2U];
-        }
-    }
-    if (vlTOPp->reset) {
         vlSymsp->TOP__Bitty.__Vcellout__regS__out = 0U;
     } else {
         if (vlSymsp->TOP__Bitty.reg_en[0U]) {
@@ -101,6 +37,78 @@ VL_INLINE_OPT void VBitty_Bitty::_sequent__TOP__Bitty__1(VBitty__Syms* __restric
         if (vlSymsp->TOP__Bitty.reg_en[1U]) {
             vlSymsp->TOP__Bitty.__Vcellout__regC__out 
                 = vlSymsp->TOP__Bitty.d_in[1U];
+        }
+    }
+    if (vlTOPp->reset) {
+        vlSymsp->TOP__Bitty.__Vcellout__reg_inst_block__BRA__9__KET____DOT__regN__out = 0U;
+    } else {
+        if ((vlSymsp->TOP__Bitty.reg_en[9U] | (IData)(vlTOPp->init_en))) {
+            vlSymsp->TOP__Bitty.__Vcellout__reg_inst_block__BRA__9__KET____DOT__regN__out 
+                = ((IData)(vlTOPp->init_en) ? vlSymsp->TOP__Bitty.init_data
+                   [7U] : vlSymsp->TOP__Bitty.d_in[9U]);
+        }
+    }
+    if (vlTOPp->reset) {
+        vlSymsp->TOP__Bitty.__Vcellout__reg_inst_block__BRA__8__KET____DOT__regN__out = 0U;
+    } else {
+        if ((vlSymsp->TOP__Bitty.reg_en[8U] | (IData)(vlTOPp->init_en))) {
+            vlSymsp->TOP__Bitty.__Vcellout__reg_inst_block__BRA__8__KET____DOT__regN__out 
+                = ((IData)(vlTOPp->init_en) ? vlSymsp->TOP__Bitty.init_data
+                   [6U] : vlSymsp->TOP__Bitty.d_in[8U]);
+        }
+    }
+    if (vlTOPp->reset) {
+        vlSymsp->TOP__Bitty.__Vcellout__reg_inst_block__BRA__7__KET____DOT__regN__out = 0U;
+    } else {
+        if ((vlSymsp->TOP__Bitty.reg_en[7U] | (IData)(vlTOPp->init_en))) {
+            vlSymsp->TOP__Bitty.__Vcellout__reg_inst_block__BRA__7__KET____DOT__regN__out 
+                = ((IData)(vlTOPp->init_en) ? vlSymsp->TOP__Bitty.init_data
+                   [5U] : vlSymsp->TOP__Bitty.d_in[7U]);
+        }
+    }
+    if (vlTOPp->reset) {
+        vlSymsp->TOP__Bitty.__Vcellout__reg_inst_block__BRA__6__KET____DOT__regN__out = 0U;
+    } else {
+        if ((vlSymsp->TOP__Bitty.reg_en[6U] | (IData)(vlTOPp->init_en))) {
+            vlSymsp->TOP__Bitty.__Vcellout__reg_inst_block__BRA__6__KET____DOT__regN__out 
+                = ((IData)(vlTOPp->init_en) ? vlSymsp->TOP__Bitty.init_data
+                   [4U] : vlSymsp->TOP__Bitty.d_in[6U]);
+        }
+    }
+    if (vlTOPp->reset) {
+        vlSymsp->TOP__Bitty.__Vcellout__reg_inst_block__BRA__5__KET____DOT__regN__out = 0U;
+    } else {
+        if ((vlSymsp->TOP__Bitty.reg_en[5U] | (IData)(vlTOPp->init_en))) {
+            vlSymsp->TOP__Bitty.__Vcellout__reg_inst_block__BRA__5__KET____DOT__regN__out 
+                = ((IData)(vlTOPp->init_en) ? vlSymsp->TOP__Bitty.init_data
+                   [3U] : vlSymsp->TOP__Bitty.d_in[5U]);
+        }
+    }
+    if (vlTOPp->reset) {
+        vlSymsp->TOP__Bitty.__Vcellout__reg_inst_block__BRA__4__KET____DOT__regN__out = 0U;
+    } else {
+        if ((vlSymsp->TOP__Bitty.reg_en[4U] | (IData)(vlTOPp->init_en))) {
+            vlSymsp->TOP__Bitty.__Vcellout__reg_inst_block__BRA__4__KET____DOT__regN__out 
+                = ((IData)(vlTOPp->init_en) ? vlSymsp->TOP__Bitty.init_data
+                   [2U] : vlSymsp->TOP__Bitty.d_in[4U]);
+        }
+    }
+    if (vlTOPp->reset) {
+        vlSymsp->TOP__Bitty.__Vcellout__reg_inst_block__BRA__3__KET____DOT__regN__out = 0U;
+    } else {
+        if ((vlSymsp->TOP__Bitty.reg_en[3U] | (IData)(vlTOPp->init_en))) {
+            vlSymsp->TOP__Bitty.__Vcellout__reg_inst_block__BRA__3__KET____DOT__regN__out 
+                = ((IData)(vlTOPp->init_en) ? vlSymsp->TOP__Bitty.init_data
+                   [1U] : vlSymsp->TOP__Bitty.d_in[3U]);
+        }
+    }
+    if (vlTOPp->reset) {
+        vlSymsp->TOP__Bitty.__Vcellout__reg_inst_block__BRA__2__KET____DOT__regN__out = 0U;
+    } else {
+        if ((vlSymsp->TOP__Bitty.reg_en[2U] | (IData)(vlTOPp->init_en))) {
+            vlSymsp->TOP__Bitty.__Vcellout__reg_inst_block__BRA__2__KET____DOT__regN__out 
+                = ((IData)(vlTOPp->init_en) ? vlSymsp->TOP__Bitty.init_data
+                   [0U] : vlSymsp->TOP__Bitty.d_in[2U]);
         }
     }
     vlSymsp->TOP__Bitty.done = (1U & (((IData)(vlSymsp->TOP__Bitty.__PVT__ControlUnit1__DOT__state) 
@@ -126,6 +134,8 @@ VL_INLINE_OPT void VBitty_Bitty::_sequent__TOP__Bitty__1(VBitty__Syms* __restric
         }
     }
     vlSymsp->TOP__Bitty.d_out[0xaU] = vlSymsp->TOP__Bitty.__Vcellout__reg_inst__out;
+    vlSymsp->TOP__Bitty.d_out[0U] = vlSymsp->TOP__Bitty.__Vcellout__regS__out;
+    vlSymsp->TOP__Bitty.d_out[1U] = vlSymsp->TOP__Bitty.__Vcellout__regC__out;
     vlSymsp->TOP__Bitty.d_out[9U] = vlSymsp->TOP__Bitty.__Vcellout__reg_inst_block__BRA__9__KET____DOT__regN__out;
     vlSymsp->TOP__Bitty.d_out[8U] = vlSymsp->TOP__Bitty.__Vcellout__reg_inst_block__BRA__8__KET____DOT__regN__out;
     vlSymsp->TOP__Bitty.d_out[7U] = vlSymsp->TOP__Bitty.__Vcellout__reg_inst_block__BRA__7__KET____DOT__regN__out;
@@ -134,8 +144,6 @@ VL_INLINE_OPT void VBitty_Bitty::_sequent__TOP__Bitty__1(VBitty__Syms* __restric
     vlSymsp->TOP__Bitty.d_out[4U] = vlSymsp->TOP__Bitty.__Vcellout__reg_inst_block__BRA__4__KET____DOT__regN__out;
     vlSymsp->TOP__Bitty.d_out[3U] = vlSymsp->TOP__Bitty.__Vcellout__reg_inst_block__BRA__3__KET____DOT__regN__out;
     vlSymsp->TOP__Bitty.d_out[2U] = vlSymsp->TOP__Bitty.__Vcellout__reg_inst_block__BRA__2__KET____DOT__regN__out;
-    vlSymsp->TOP__Bitty.d_out[0U] = vlSymsp->TOP__Bitty.__Vcellout__regS__out;
-    vlSymsp->TOP__Bitty.d_out[1U] = vlSymsp->TOP__Bitty.__Vcellout__regC__out;
     vlSymsp->TOP__Bitty.reg_en[1U] = vlSymsp->TOP__Bitty.__Vcellout__ControlUnit1__en_c;
     vlSymsp->TOP__Bitty.reg_en[0U] = vlSymsp->TOP__Bitty.__Vcellout__ControlUnit1__en_s;
     vlSymsp->TOP__Bitty.reg_en[0xaU] = vlSymsp->TOP__Bitty.__Vcellout__ControlUnit1__en_inst;

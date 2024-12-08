@@ -34,14 +34,16 @@ VL_MODULE(VBitty) {
     VL_IN8(reset,0,0);
     VL_OUT8(done,0,0);
     VL_IN8(run,0,0);
+    VL_IN8(init_en,0,0);
     VL_IN16(din,15,0);
     VL_OUT16(dout[11],15,0);
+    VL_IN16(init_data[8],15,0);
     
     // LOCAL VARIABLES
     // Internals; generally not touched by application code
     CData/*0:0*/ __Vclklast__TOP__clk;
     CData/*0:0*/ __Vclklast__TOP__reset;
-    CData/*0:0*/ __Vm_traceActivity[2];
+    CData/*0:0*/ __Vm_traceActivity[3];
     
     // INTERNAL VARIABLES
     // Internals; generally not touched by application code
@@ -90,6 +92,7 @@ VL_MODULE(VBitty) {
     static void _eval_initial(VBitty__Syms* __restrict vlSymsp) VL_ATTR_COLD;
     static void _eval_settle(VBitty__Syms* __restrict vlSymsp) VL_ATTR_COLD;
     static void _sequent__TOP__1(VBitty__Syms* __restrict vlSymsp);
+    static void _settle__TOP__2(VBitty__Syms* __restrict vlSymsp);
   private:
     static void traceChgSub0(void* userp, VerilatedVcd* tracep);
     static void traceChgTop0(void* userp, VerilatedVcd* tracep);

@@ -50,9 +50,11 @@ void VBitty::_eval_settle(VBitty__Syms* __restrict vlSymsp) {
     VL_DEBUG_IF(VL_DBG_MSGF("+    VBitty::_eval_settle\n"); );
     VBitty* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
     // Body
-    vlSymsp->TOP__Bitty._settle__TOP__Bitty__2(vlSymsp);
+    vlTOPp->_settle__TOP__2(vlSymsp);
+    vlTOPp->__Vm_traceActivity[2U] = 1U;
     vlTOPp->__Vm_traceActivity[1U] = 1U;
     vlTOPp->__Vm_traceActivity[0U] = 1U;
+    vlSymsp->TOP__Bitty._settle__TOP__Bitty__2(vlSymsp);
     vlTOPp->_sequent__TOP__1(vlSymsp);
 }
 
@@ -67,7 +69,11 @@ void VBitty::_ctor_var_reset() {
             dout[__Vi0] = VL_RAND_RESET_I(16);
     }}
     run = VL_RAND_RESET_I(1);
-    { int __Vi0=0; for (; __Vi0<2; ++__Vi0) {
+    init_en = VL_RAND_RESET_I(1);
+    { int __Vi0=0; for (; __Vi0<8; ++__Vi0) {
+            init_data[__Vi0] = VL_RAND_RESET_I(16);
+    }}
+    { int __Vi0=0; for (; __Vi0<3; ++__Vi0) {
             __Vm_traceActivity[__Vi0] = VL_RAND_RESET_I(1);
     }}
 }

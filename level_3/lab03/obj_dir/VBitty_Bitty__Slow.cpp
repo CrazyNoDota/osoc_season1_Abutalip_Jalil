@@ -575,6 +575,10 @@ void VBitty_Bitty::_ctor_var_reset() {
             dout[__Vi0] = VL_RAND_RESET_I(16);
     }}
     run = VL_RAND_RESET_I(1);
+    init_en = VL_RAND_RESET_I(1);
+    { int __Vi0=0; for (; __Vi0<8; ++__Vi0) {
+            init_data[__Vi0] = VL_RAND_RESET_I(16);
+    }}
     { int __Vi0=0; for (; __Vi0<11; ++__Vi0) {
             d_out[__Vi0] = VL_RAND_RESET_I(16);
     }}

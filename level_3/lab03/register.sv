@@ -8,7 +8,7 @@ module register(
 
     always@(posedge clk or posedge reset) begin
         if (reset) begin
-            out <= 16'd0; // Initialize to zero or desired value
+            out <= 16'd0; // Initialize to zero on reset
         end else if(enable) begin
             out <= in;
         end

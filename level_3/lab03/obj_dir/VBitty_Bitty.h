@@ -24,8 +24,10 @@ VL_MODULE(VBitty_Bitty) {
     VL_IN8(reset,0,0);
     VL_OUT8(done,0,0);
     VL_IN8(run,0,0);
+    VL_IN8(init_en,0,0);
     VL_IN16(din,15,0);
     VL_OUT16(dout[11],15,0);
+    VL_IN16(init_data[8],15,0);
     
     // LOCAL SIGNALS
     CData/*3:0*/ __PVT__alu_sel;

@@ -86,6 +86,28 @@ VL_INLINE_OPT void VBitty::_sequent__TOP__1(VBitty__Syms* __restrict vlSymsp) {
     vlTOPp->dout[0U] = vlSymsp->TOP__Bitty.dout[0U];
 }
 
+VL_INLINE_OPT void VBitty::_settle__TOP__2(VBitty__Syms* __restrict vlSymsp) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    VBitty::_settle__TOP__2\n"); );
+    VBitty* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
+    // Body
+    vlSymsp->TOP__Bitty.init_data[7U] = vlTOPp->init_data
+        [7U];
+    vlSymsp->TOP__Bitty.init_data[6U] = vlTOPp->init_data
+        [6U];
+    vlSymsp->TOP__Bitty.init_data[5U] = vlTOPp->init_data
+        [5U];
+    vlSymsp->TOP__Bitty.init_data[4U] = vlTOPp->init_data
+        [4U];
+    vlSymsp->TOP__Bitty.init_data[3U] = vlTOPp->init_data
+        [3U];
+    vlSymsp->TOP__Bitty.init_data[2U] = vlTOPp->init_data
+        [2U];
+    vlSymsp->TOP__Bitty.init_data[1U] = vlTOPp->init_data
+        [1U];
+    vlSymsp->TOP__Bitty.init_data[0U] = vlTOPp->init_data
+        [0U];
+}
+
 void VBitty::_eval(VBitty__Syms* __restrict vlSymsp) {
     VL_DEBUG_IF(VL_DBG_MSGF("+    VBitty::_eval\n"); );
     VBitty* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
@@ -96,6 +118,8 @@ void VBitty::_eval(VBitty__Syms* __restrict vlSymsp) {
         vlTOPp->__Vm_traceActivity[1U] = 1U;
         vlTOPp->_sequent__TOP__1(vlSymsp);
     }
+    vlTOPp->_settle__TOP__2(vlSymsp);
+    vlTOPp->__Vm_traceActivity[2U] = 1U;
     vlSymsp->TOP__Bitty._combo__TOP__Bitty__3(vlSymsp);
     // Final
     vlTOPp->__Vclklast__TOP__clk = vlTOPp->clk;
@@ -128,5 +152,7 @@ void VBitty::_eval_debug_assertions() {
         Verilated::overWidthError("reset");}
     if (VL_UNLIKELY((run & 0xfeU))) {
         Verilated::overWidthError("run");}
+    if (VL_UNLIKELY((init_en & 0xfeU))) {
+        Verilated::overWidthError("init_en");}
 }
 #endif  // VL_DEBUG
